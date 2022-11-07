@@ -1,0 +1,1 @@
+{"Word":"BUREAU","WordRune":[95,85,95,69,65,95],"Attempts":8,"LettersSuggested":["A"],"LetterFile":"standard.txt"}
