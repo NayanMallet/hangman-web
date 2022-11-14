@@ -7,11 +7,48 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman-Web</title>
     <style>
+    * {
+        box-sizing: border-box;
+        font-family: Montserrat,sans-serif;
+        font-size: 1.5rem;
+    }
 
+    html, body {
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        background-img: url("../assets/arcade-background.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+    }
+
+    .home_div {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+     }
+    .home_div a {
+        text-decoration: none;
+        color: black;
+        margin-top: 1rem;
+        transition: 0.3s;
+        }
+
+    .home_div a:hover {
+        color: blueviolet;
+    }
     </style>
 </head>
 <body>
-    <h1>Home</h1>
-    <button onclick="window.location.href = 'http://localhost:8080/play';">Home</button>
+    <div class="home_div">
+       <a href="http://localhost:8080/hangman">START</a>
+    </div>
 </body>
 </html>

@@ -10,7 +10,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 }
 
 func Play(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "play")
+	renderTemplate(w, "hangman")
 	//H.Game()
 }
 
