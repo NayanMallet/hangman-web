@@ -12,7 +12,7 @@ type Infos struct {
 }
 
 var UsrData = Infos{
-	Letter: "",
+	Letter: "________",
 	Lives:  10,
 }
 
