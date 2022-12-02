@@ -2,18 +2,27 @@ package main
 
 import (
 	"fmt"
+	"hangman-web/functions"
 	"net/http"
 	"text/template"
 )
 
 type Infos struct {
-	Letter string
-	Lives  int
+	Word            string
+	WordRune        []rune
+	WordToPrint     string
+	Propositon      string
+	LetterSuggested []string
+	Lives           int
 }
 
-var UsrData = Infos{
-	Letter: "________",
-	Lives:  10,
+var StartData = Infos{
+	Word:            "",
+	WordRune:        nil,
+	WordToPrint:     "",
+	Propositon:      "",
+	LetterSuggested: nil,
+	Lives:           10,
 }
 
 func Home(w http.ResponseWriter, r *http.Request) {
@@ -25,17 +34,24 @@ func Play(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "404 not found.", http.StatusNotFound)
 		return
 	}
+
+	word, wordRune := functions.NewGamePrep()
+	StartData.Lives = 10
+	StartData.Word = word
+	StartData.WordRune = wordRune
+	StartData.WordToPrint = functions.WordToPrint(StartData.WordRune)
+
 	switch r.Method {
 	case "GET":
-		renderTemplate(w, "hangman", UsrData)
+		renderTemplate(w, "hangman", StartData)
 
 	case "POST":
 		if err := r.ParseForm(); err != nil {
 			fmt.Fprintf(w, "ParseForm() err: %v", err)
 			return
 		}
-		UsrData.Letter = r.FormValue("letter")
-		renderTemplate(w, "hangman", UsrData)
+		StartData.Propositon = r.FormValue("letter")
+		renderTemplate(w, "hangman", StartData)
 
 	default:
 		fmt.Fprintf(w, "Only GET and POST")
