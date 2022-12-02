@@ -9,6 +9,9 @@ import (
 const port = ":8080"
 
 func main() {
+	fs := http.FileServer(http.Dir("assets/"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/hangman", Play)
 

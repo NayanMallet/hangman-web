@@ -14,6 +14,7 @@ type Infos struct {
 	Propositon      string
 	LetterSuggested []string
 	Lives           int
+	Url             string
 }
 
 var StartData = Infos{
@@ -23,6 +24,7 @@ var StartData = Infos{
 	Propositon:      "",
 	LetterSuggested: nil,
 	Lives:           10,
+	Url:             "",
 }
 
 func Home(w http.ResponseWriter, r *http.Request) {
@@ -40,7 +42,7 @@ func Play(w http.ResponseWriter, r *http.Request) {
 	StartData.Word = word
 	StartData.WordRune = wordRune
 	StartData.WordToPrint = functions.WordToPrint(StartData.WordRune)
-
+	StartData.Url = functions.PrintMan(StartData.Lives)
 	switch r.Method {
 	case "GET":
 		renderTemplate(w, "hangman", StartData)

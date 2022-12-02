@@ -5,101 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="http://localhost:8080/static/styles/hangman.css">
     <title>Hangman-Web</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Montserrat,sans-serif;
-            font-size: 1.5rem;
-        }
-
-        html, body, .hm_body_box {
-            width: 100%;
-            height: 100%;
-        }
-
-        body {
-            background-color: #222;
-            color: #fff !important;
-        }
-
-        .hm_header_box {
-            width: 100%;
-            height: 17vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hm_header_box h1 {
-            font-size: 3rem;
-        }
-
-        .hm_body_box, .hm_game_box {
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .hm_hangman_box {
-            width: 100%;
-            height: 45vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: #484848;
-        }
-
-        .hm_word {
-            width: 100%;
-            height: 10vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hm_word p {
-            font-size: 3rem;
-        }
-
-        .hm_lives {
-            width: 100%;
-            height: 10vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 2vh;
-        }
-
-        .hm_lives p {
-            font-size: 2rem;
-            width: fit-content;
-        }
-
-        .hm_input_box {
-            width: 100%;
-            height: 15vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hm_footer_box {
-            width: 100%;
-            height: 5vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hm_footer_box p {
-            font-size: 1rem;
-        }
-
-    </style>
 </head>
 <body>
     <div class="hm_body_box">
@@ -113,8 +20,7 @@
            <div class="hm_lives">
                <p>{{ .Lives }}</p>
            </div>
-           <div class="hm_hangman_box" >
-               // Hangman image
+           <div class='hm_hangman_box' style='background: url("http://localhost:8080/static/hangman-steps/2.png") center'>
            </div>
            <div class="hm_input_box">
                <form
