@@ -4,49 +4,47 @@ import (
 	game_function "hangman-classic/g-func"
 )
 
-func WordToPrint(runeArray []rune) string {
-	return string(runeArray)
-}
-
-func NewGamePrep() (Word string, WordRune []rune) {
-	Word, WordRune = game_function.NewGamePrep([]string{"words.txt"})
-	return Word, WordRune
-}
-
-func Game(word string, wordrune []rune, proposition string, letterssuggested []string, lives int) {
-	if lives > 0 {
-		if string(wordrune) == word {
+func Game(Data Infos) Infos {
+	if Data.Lives > 0 {
+		if string(Data.WordRune) == Data.Word {
 			// TODO: Print Congrats
-			return
+			Data.WordToPrint = "Congrats !"
+			return Data
 		}
-		if len(proposition) > 1 {
+		if len(Data.Propositon) > 1 {
 			// case Mot
-			if proposition == word {
+			if Data.Propositon == Data.Word {
 				// TODO: Print Congrats
-				return
+				Data.WordToPrint = "Congrats !"
+				return Data
 			} else {
-				lives -= 2
 				// TODO: Print lives lefts & hangman
+				Data.Lives -= 2
+				Data.Url = PrintMan(Data.Lives)
 			}
 		} else {
 			// case Letter
-			if game_function.ContainsTable(letterssuggested, proposition) {
+			if game_function.ContainsTable(Data.LetterSuggested, Data.Propositon) {
 				// TODO: Letter already proposed
 			} else {
-				if game_function.ContainsString(word, proposition) {
-					letterssuggested = append(letterssuggested, proposition)
-					indexes := game_function.LetterInWorld(word, proposition)
+				if game_function.ContainsString(Data.Word, Data.Propositon) {
+					Data.LetterSuggested = append(Data.LetterSuggested, Data.Propositon)
+					indexes := game_function.LetterInWorld(Data.Word, Data.Propositon)
 					for _, i := range indexes {
-						wordrune[i] = rune(word[i])
+						Data.WordRune[i] = rune(Data.Word[i])
 					}
 					// TODO: Print Proposition + WordToPrint
+					Data.WordToPrint = WordToPrint(Data.WordRune)
 				} else {
-					lives--
+					Data.Lives--
+					Data.Url = PrintMan(Data.Lives)
 					// TODO: Print lives lefts & hangman
-					//PrintMan(attemps)
 				}
 			}
 		}
+		return Data
 	}
 	// TODO: Print Loose + The Word
+	Data.WordToPrint = "You Loose ! The word was " + Data.Word
+	return Data
 }

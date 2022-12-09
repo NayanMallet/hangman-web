@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="http://localhost:8080/static/styles/hangman.css">
+    <link rel="stylesheet" href="/static/styles/hangman.css">
     <title>Hangman-Web</title>
 </head>
 <body>
@@ -15,20 +15,19 @@
         </div>
        <div class="hm_game_box">
            <div class="hm_word">
-                <p>{{ .WordToPrint }}</p>
+                <p id="hm_word_text">{{ .WordToPrint }}</p>
            </div>
            <div class="hm_lives">
-               <p>{{ .Lives }}</p>
+               <p id="hm_lives_text">{{ .Lives }}</p>
            </div>
            <div class='hm_hangman_box' style='background: url("http://localhost:8080/static/hangman-steps/2.png") center'>
            </div>
            <div class="hm_input_box">
-               <form
-                   method="POST"
-                   action="/hangman"
-               >
+               <form id="input-form"
+                     action="/api/hangman"
+                     method="post">
                    <input class="hm_input" type="text" placeholder="Enter a Letter/Word" id="letter_input" name="letter" required>
-                   <input type="button" class="hm_submit_button" value="Submit" onclick={}>
+                   <input class="hm_submit_button" type="submit" value="Submit">
                </form>
            </div>
        </div>
@@ -36,5 +35,6 @@
             <p>By Nayan Mallet & Pablo Jean Louis</p>
         </div>
     </div>
+
 </body>
 </html>

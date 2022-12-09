@@ -4,28 +4,11 @@ import (
 	"fmt"
 	"hangman-web/functions"
 	"net/http"
+	"strings"
 	"text/template"
 )
 
-type Infos struct {
-	Word            string
-	WordRune        []rune
-	WordToPrint     string
-	Propositon      string
-	LetterSuggested []string
-	Lives           int
-	Url             string
-}
-
-var StartData = Infos{
-	Word:            "",
-	WordRune:        nil,
-	WordToPrint:     "",
-	Propositon:      "",
-	LetterSuggested: nil,
-	Lives:           10,
-	Url:             "",
-}
+var StartData functions.Infos
 
 func Home(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "home", nil)
@@ -36,27 +19,37 @@ func Play(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "404 not found.", http.StatusNotFound)
 		return
 	}
-
-	word, wordRune := functions.NewGamePrep()
-	StartData.Lives = 10
-	StartData.Word = word
-	StartData.WordRune = wordRune
+	StartData = functions.NewGamePrep()
 	StartData.WordToPrint = functions.WordToPrint(StartData.WordRune)
 	StartData.Url = functions.PrintMan(StartData.Lives)
-	switch r.Method {
-	case "GET":
-		renderTemplate(w, "hangman", StartData)
+	renderTemplate(w, "hangman", StartData)
+}
 
-	case "POST":
-		if err := r.ParseForm(); err != nil {
-			fmt.Fprintf(w, "ParseForm() err: %v", err)
-			return
+func Request(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/api/hangman" {
+		http.Error(w, "404 not found.", http.StatusNotFound)
+		return
+	}
+	if StartData.Lives > 0 {
+		switch r.Method {
+		case "GET":
+			renderTemplate(w, "hangman", StartData)
+		case "POST":
+			if err := r.ParseForm(); err != nil {
+				fmt.Fprintf(w, "ParseForm() err: %v", err)
+				return
+			}
+			StartData.Propositon = strings.ToUpper(r.FormValue("letter"))
+			StartData = functions.Game(StartData)
+			renderTemplate(w, "hangman", StartData)
+
+		default:
+			fmt.Fprintf(w, "Only GET and POST")
 		}
-		StartData.Propositon = r.FormValue("letter")
+	} else {
+		//renderTemplate(w, "game-over", StartData)
+		StartData.WordToPrint = StartData.Word
 		renderTemplate(w, "hangman", StartData)
-
-	default:
-		fmt.Fprintf(w, "Only GET and POST")
 	}
 
 }
