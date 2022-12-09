@@ -5,6 +5,9 @@ import (
 )
 
 func Game(Data Infos) Infos {
+	if Data.Propositon == "" {
+		return Data
+	}
 	if Data.Lives > 0 {
 		if string(Data.WordRune) == Data.Word {
 			// TODO: Print Congrats
@@ -42,6 +45,7 @@ func Game(Data Infos) Infos {
 				}
 			}
 		}
+		Data.Propositon = ""
 		return Data
 	}
 	// TODO: Print Loose + The Word
