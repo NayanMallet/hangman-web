@@ -28,6 +28,7 @@ func RequestDifficulty(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "ParseForm() err: %v", err)
 			return
 		}
+		// Setting up new game values by difficulty
 		Difficulty = r.FormValue("difficulty")
 		StartData = functions.NewGamePrep(Difficulty)
 		StartData.WordToPrint = functions.WordToPrint(StartData.WordRune)
