@@ -41,5 +41,33 @@ body {
     text-shadow: 0 0 10px #fff,
     0 0 20px #fff,
     0 0 40px #fff;
+}
 
+input[type="radio"].difficulty {
+    display: none;
+}
+
+input[type="radio"].difficulty + label {
+    padding: 0.3rem 0.5rem;
+    border: 1px dashed #ccc;
+}
+
+input[type="radio"].difficulty:checked + label {
+    border: 1px solid #000;
+}
+
+.h_submit_button {
+    padding: 0.3rem 0.5rem;
+    border: 1px dashed #ccc;
+    background-color: #fff;
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.5s ease;
+}
+
+.h_submit_button:hover {
+    background-color: #000;
+    color: #fff;
 }

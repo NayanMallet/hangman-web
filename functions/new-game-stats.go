@@ -12,8 +12,18 @@ type Infos struct {
 	Url             string
 }
 
-func NewGamePrep() (StartData Infos) {
-	Word, WordRune := game_function.NewGamePrep([]string{"words.txt"})
+func NewGamePrep(Difficulty string) (StartData Infos) {
+	Word := ""
+	var WordRune []rune
+	switch Difficulty {
+	case "easy":
+		Word, WordRune = game_function.NewGamePrep([]string{"words.txt"})
+	case "medium":
+		Word, WordRune = game_function.NewGamePrep([]string{"words2.txt"})
+	case "hard":
+		Word, WordRune = game_function.NewGamePrep([]string{"words3.txt"})
+	}
+
 	StartData = Infos{
 		Word:            Word,
 		WordRune:        WordRune,
