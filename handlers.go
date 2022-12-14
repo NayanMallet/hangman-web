@@ -9,7 +9,6 @@ import (
 )
 
 var StartData functions.Infos
-var Difficulty = ""
 
 func Home(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "home", nil)
@@ -28,9 +27,10 @@ func RequestDifficulty(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "ParseForm() err: %v", err)
 			return
 		}
+		// fmt.Fprintf(w, "%v", ScoreRank)
 		// Setting up new game values by difficulty
-		Difficulty = r.FormValue("difficulty")
-		StartData = functions.NewGamePrep(Difficulty)
+		StartData = functions.NewGamePrep(r.FormValue("difficulty"))
+		StartData.Name = r.FormValue("username")
 		StartData.WordToPrint = functions.WordToPrint(StartData.WordRune)
 		StartData.Url = functions.PrintMan(StartData.Lives)
 		http.Redirect(w, r, "/hangman", http.StatusSeeOther)

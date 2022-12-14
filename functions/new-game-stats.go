@@ -10,6 +10,9 @@ type Infos struct {
 	LetterSuggested []string
 	Lives           int
 	Url             string
+	Name            string
+	Difficulty      string
+	Points          int
 }
 
 func NewGamePrep(Difficulty string) (StartData Infos) {
@@ -32,6 +35,9 @@ func NewGamePrep(Difficulty string) (StartData Infos) {
 		LetterSuggested: nil,
 		Lives:           10,
 		Url:             PrintMan(10),
+		Name:            "",
+		Difficulty:      Difficulty,
+		Points:          0,
 	}
 	return StartData
 }

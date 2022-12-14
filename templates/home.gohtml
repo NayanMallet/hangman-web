@@ -11,10 +11,11 @@
 <body>
     <div class="home_div">
         <form
-                id="home-form"
+                id="home_form"
                 action="/api/"
                 method="post"
         >
+            <input class="user_name_input" type="text" name="username" placeholder="userName" required>
             <div class="h_difficulty_box">
                 <input type="radio" id="difficulty-easy" name="difficulty" value="easy" class="difficulty" checked>
                 <label for="difficulty-easy">Easy</label>
