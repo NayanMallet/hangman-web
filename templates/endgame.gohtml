@@ -9,21 +9,14 @@
     <title>Hangman-Web</title>
 </head>
 <body>
-    <div class="hm_body_box">
-        <div class="hm_word">
-            <p id="hm_word_text">Congrats !</p>
-        </div>
-
-        <form
-                id="end_form"
-                action="/api/endgame"
-                method="post"
-        >
-            <input class="h_submit_button" type="submit" value="Play">
-        </form>
-        <div class="hm_footer_box">
-            <p>By Nayan Mallet & Pablo Jean Louis</p>
-        </div>
+    <div class="end_header_box">
+        <h1 id="hm_word_text">{{ .WinLose }}</h1>
+    </div>
+    <div class="end_body_box">
+        <a href="/">Replay</a>
+    </div>
+    <div class="end_footer_box">
+        <p>By Nayan Mallet & Pablo Jean Louis</p>
     </div>
 </body>
 </html>

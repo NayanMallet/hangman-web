@@ -7,20 +7,19 @@ import (
 func Game(Data Infos) Infos {
 	if Data.Lives > 1 {
 		if string(Data.WordRune) == Data.Word {
-			// TODO: Print Congrats
-			Data.WordToPrint = "Congrats !"
+			Data.Win = true
 			return Data
 		}
 		if len(Data.Propositon) > 1 {
 			// case Mot
 			if Data.Propositon == Data.Word {
-				// TODO: Print Congrats
-				Data.WordToPrint = "Congrats !"
+				Data.Win = true
 				return Data
 			} else {
 				// TODO: Print lives lefts & hangman
 				Data.Lives -= 2
 				Data.Url = PrintMan(Data.Lives)
+				return Data
 			}
 		} else {
 			// case Letter
@@ -39,26 +38,25 @@ func Game(Data Infos) Infos {
 					Data.Lives--
 					Data.Url = PrintMan(Data.Lives)
 					// TODO: Print lives lefts & hangman
+					return Data
 				}
 			}
 		}
 		return Data
 	} else {
 		if string(Data.WordRune) == Data.Word {
-			// TODO: Print Congrats
-			Data.WordToPrint = "Congrats !"
+			Data.Win = true
 			return Data
 		}
 		if len(Data.Propositon) > 1 {
 			// case Mot
 			if Data.Propositon == Data.Word {
-				// TODO: Print Congrats
-				Data.WordToPrint = "Congrats !"
+				Data.Win = true
 				return Data
 			} else {
 				// TODO: Print Loose + The Word
 				Data.Lives -= 2
-				Data.WordToPrint = "You Loose ! The word was " + Data.Word
+				Data.Win = false
 				return Data
 			}
 		} else {
@@ -77,12 +75,11 @@ func Game(Data Infos) Infos {
 				} else {
 					// TODO: Print Loose + The Word
 					Data.Lives--
-					Data.WordToPrint = "You Loose ! The word was " + Data.Word
+					Data.Win = false
 					return Data
 				}
 			}
 		}
 		return Data
 	}
-
 }

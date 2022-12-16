@@ -13,6 +13,8 @@ type Infos struct {
 	Name            string
 	Difficulty      string
 	Points          int
+	Win             bool
+	WinLose         string
 }
 
 func NewGamePrep(Difficulty string) (StartData Infos) {
@@ -38,6 +40,8 @@ func NewGamePrep(Difficulty string) (StartData Infos) {
 		Name:            "",
 		Difficulty:      Difficulty,
 		Points:          0,
+		Win:             false,
+		WinLose:         "",
 	}
 	return StartData
 }
