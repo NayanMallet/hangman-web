@@ -57,6 +57,7 @@ func Game(Data Infos) Infos {
 				return Data
 			} else {
 				// TODO: Print Loose + The Word
+				Data.Lives -= 2
 				Data.WordToPrint = "You Loose ! The word was " + Data.Word
 				return Data
 			}
@@ -75,6 +76,7 @@ func Game(Data Infos) Infos {
 					Data.WordToPrint = WordToPrint(Data.WordRune)
 				} else {
 					// TODO: Print Loose + The Word
+					Data.Lives--
 					Data.WordToPrint = "You Loose ! The word was " + Data.Word
 					return Data
 				}
