@@ -12,6 +12,7 @@ func main() {
 	fs := http.FileServer(http.Dir("assets/"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
+	http.HandleFunc("/api/", RequestDifficulty)
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/api/hangman", Request)
 	http.HandleFunc("/hangman", Play)
@@ -23,6 +24,5 @@ func main() {
 
 // idée borne d'arcade
 
-//TODO: construct form for choose difficulty
 //TODO: win/lose affichage
 //TODO: add a button to restart the game

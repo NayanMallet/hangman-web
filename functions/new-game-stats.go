@@ -10,10 +10,23 @@ type Infos struct {
 	LetterSuggested []string
 	Lives           int
 	Url             string
+	Name            string
+	Difficulty      string
+	Points          int
 }
 
-func NewGamePrep() (StartData Infos) {
-	Word, WordRune := game_function.NewGamePrep([]string{"words.txt"})
+func NewGamePrep(Difficulty string) (StartData Infos) {
+	Word := ""
+	var WordRune []rune
+	switch Difficulty {
+	case "easy":
+		Word, WordRune = game_function.NewGamePrep([]string{"words.txt"})
+	case "medium":
+		Word, WordRune = game_function.NewGamePrep([]string{"words2.txt"})
+	case "hard":
+		Word, WordRune = game_function.NewGamePrep([]string{"words3.txt"})
+	}
+
 	StartData = Infos{
 		Word:            Word,
 		WordRune:        WordRune,
@@ -22,6 +35,9 @@ func NewGamePrep() (StartData Infos) {
 		LetterSuggested: nil,
 		Lives:           10,
 		Url:             PrintMan(10),
+		Name:            "",
+		Difficulty:      Difficulty,
+		Points:          0,
 	}
 	return StartData
 }

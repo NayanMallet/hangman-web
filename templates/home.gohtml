@@ -6,11 +6,31 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman-Web</title>
-    <link rel="stylesheet" href="/static/styles/home.css ">
+    <link rel="stylesheet" href="/static/styles/home.css">
 </head>
 <body>
     <div class="home_div">
-        <a href="/hangman">START</a>
+        <form
+                id="home_form"
+                action="/api/"
+                method="post"
+        >
+            <input class="user_name_input" type="text" name="username" placeholder="userName" required>
+            <div class="h_difficulty_box">
+                <input type="radio" id="difficulty-easy" name="difficulty" value="easy" class="difficulty" checked>
+                <label for="difficulty-easy">Easy</label>
+
+                <input type="radio" id="difficulty-medium" name="difficulty" value="medium" class="difficulty">
+                <label for="difficulty-medium">Medium</label>
+
+                <input type="radio" id="difficulty-hard" name="difficulty" value="hard" class="difficulty">
+                <label for="difficulty-hard">Hard</label>
+            </div>
+            <input class="h_submit_button" type="submit" value="Play">
+        </form>
     </div>
 </body>
+<style>
+
+</style>
 </html>
