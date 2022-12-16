@@ -35,13 +35,15 @@ body {
 }
 
 .hm_hangman_box {
-    width: 100%;
+    width: 50vw;
     height: 45vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #FFFFFF;
+}
 
-    background: #484848;
+.hm_hangman_box p {
+    width: 8px;
+    height: 100px;
 }
 
 .hm_word {
@@ -88,10 +90,4 @@ body {
 
 .hm_footer_box p {
     font-size: 1rem;
-}
-
-.hm_hangman_box {
-    background: center;
-    background-size: cover;
-    width: 50vw;
 }

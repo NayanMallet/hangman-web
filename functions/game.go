@@ -18,16 +18,15 @@ func Game(Data Infos) Infos {
 			} else {
 				// TODO: Print lives lefts & hangman
 				Data.Lives -= 2
-				Data.Url = PrintMan(Data.Lives)
+				Data.Hangman = PrintHangMan(Data.Lives)
 				return Data
 			}
 		} else {
 			// case Letter
-			if game_function.ContainsTable(Data.LetterSuggested, Data.Propositon) {
-				// TODO: Letter already proposed
-			} else {
+			if !(game_function.ContainsTable(Data.LetterSuggested, Data.Propositon)) {
+				Data.LetterSuggested = append(Data.LetterSuggested, Data.Propositon)
+				Data.LetterSuggested = SortLetterSuggested(Data.LetterSuggested)
 				if game_function.ContainsString(Data.Word, Data.Propositon) {
-					Data.LetterSuggested = append(Data.LetterSuggested, Data.Propositon)
 					indexes := game_function.LetterInWorld(Data.Word, Data.Propositon)
 					for _, i := range indexes {
 						Data.WordRune[i] = rune(Data.Word[i])
@@ -36,7 +35,7 @@ func Game(Data Infos) Infos {
 					Data.WordToPrint = WordToPrint(Data.WordRune)
 				} else {
 					Data.Lives--
-					Data.Url = PrintMan(Data.Lives)
+					Data.Hangman = PrintHangMan(Data.Lives)
 					// TODO: Print lives lefts & hangman
 					return Data
 				}
@@ -61,9 +60,9 @@ func Game(Data Infos) Infos {
 			}
 		} else {
 			// case Letter
-			if game_function.ContainsTable(Data.LetterSuggested, Data.Propositon) {
-				// TODO: Letter already proposed
-			} else {
+			if !(game_function.ContainsTable(Data.LetterSuggested, Data.Propositon)) {
+				Data.LetterSuggested = append(Data.LetterSuggested, Data.Propositon)
+				Data.LetterSuggested = SortLetterSuggested(Data.LetterSuggested)
 				if game_function.ContainsString(Data.Word, Data.Propositon) {
 					Data.LetterSuggested = append(Data.LetterSuggested, Data.Propositon)
 					indexes := game_function.LetterInWorld(Data.Word, Data.Propositon)

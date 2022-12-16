@@ -32,7 +32,7 @@ func RequestDifficulty(w http.ResponseWriter, r *http.Request) {
 		StartData = functions.NewGamePrep(r.FormValue("difficulty"))
 		StartData.Name = r.FormValue("username")
 		StartData.WordToPrint = functions.WordToPrint(StartData.WordRune)
-		StartData.Url = functions.PrintMan(StartData.Lives)
+		StartData.Hangman = functions.PrintHangMan(StartData.Lives)
 		http.Redirect(w, r, "/hangman", http.StatusSeeOther)
 	default:
 		fmt.Fprintf(w, "Only GET and POST")

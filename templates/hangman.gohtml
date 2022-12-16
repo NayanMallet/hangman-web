@@ -13,7 +13,7 @@
     <div class="hm_body_box">
         <div class="hm_header_box">
             <h1>Hangman</h1>
-            {{ .Name }}
+            {{ .LetterSuggested }}
         </div>
        <div class="hm_game_box">
            <div class="hm_word">
@@ -22,8 +22,9 @@
            <div class="hm_lives">
                <p id="hm_lives_text">{{ .Lives }}</p>
            </div>
-           <div class='hm_hangman_box' style='background: url("http://localhost:8080/static/hangman-steps/2.png") center'>
-           </div>
+           <pre class='hm_hangman_box'>
+               {{ .Hangman }}
+           </pre>
            <div class="hm_input_box">
                <form id="input-form"
                      action="/api/hangman"

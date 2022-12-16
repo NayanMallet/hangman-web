@@ -9,7 +9,7 @@ type Infos struct {
 	Propositon      string
 	LetterSuggested []string
 	Lives           int
-	Url             string
+	Hangman         string
 	Name            string
 	Difficulty      string
 	Points          int
@@ -34,9 +34,9 @@ func NewGamePrep(Difficulty string) (StartData Infos) {
 		WordRune:        WordRune,
 		WordToPrint:     WordToPrint(WordRune),
 		Propositon:      "",
-		LetterSuggested: nil,
+		LetterSuggested: []string{},
 		Lives:           10,
-		Url:             PrintMan(10),
+		Hangman:         PrintHangMan(10),
 		Name:            "",
 		Difficulty:      Difficulty,
 		Points:          0,
