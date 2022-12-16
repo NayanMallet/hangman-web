@@ -16,6 +16,14 @@ body {
     color: #fff !important;
 }
 
+.end_container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .end_header_box {
     width: 100%;
     height: 17vh;
@@ -44,7 +52,7 @@ body {
     width: 100%;
     height: 5vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
 }
 
