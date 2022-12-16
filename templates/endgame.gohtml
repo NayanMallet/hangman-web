@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/styles/endgame.css">
+    <title>Hangman-Web</title>
+</head>
+<body>
+    <div class="hm_body_box">
+        <div class="hm_word">
+            <p id="hm_word_text">Congrats !</p>
+        </div>
+
+        <form
+                id="end_form"
+                action="/api/endgame"
+                method="post"
+        >
+            <input class="h_submit_button" type="submit" value="Play">
+        </form>
+        <div class="hm_footer_box">
+            <p>By Nayan Mallet & Pablo Jean Louis</p>
+        </div>
+    </div>
+</body>
+</html>
