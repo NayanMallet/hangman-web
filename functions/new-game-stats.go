@@ -15,6 +15,7 @@ type Infos struct {
 	Points          int
 	Win             bool
 	WinLose         string
+	Alphabet        []string
 }
 
 func NewGamePrep(Difficulty string) (StartData Infos) {
@@ -41,7 +42,7 @@ func NewGamePrep(Difficulty string) (StartData Infos) {
 		Difficulty:      Difficulty,
 		Points:          0,
 		Win:             false,
-		WinLose:         "",
+		Alphabet:        []string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"},
 	}
 	return StartData
 }

@@ -16,7 +16,6 @@ func main() {
 	http.HandleFunc("/", Home)
 	http.HandleFunc("/api/hangman", Request)
 	http.HandleFunc("/hangman", Play)
-	http.HandleFunc("/endgame", EndGame)
 
 	functions.Openbrowser("http://localhost:8080")
 	fmt.Println("Serveur lancé sur le port", port)

@@ -68,16 +68,6 @@ func Request(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func EndGame(w http.ResponseWriter, r *http.Request) {
-	if StartData.Win == true {
-		StartData.WinLose = "Congrats, you won!"
-		renderTemplate(w, "endgame", StartData)
-	} else {
-		StartData.WinLose = "GAME OVER, the word was " + StartData.Word
-		renderTemplate(w, "endgame", StartData)
-	}
-}
-
 func renderTemplate(w http.ResponseWriter, file string, dataFiles any) {
 	t, err := template.ParseFiles("./templates/" + file + ".gohtml")
 	if err != nil {

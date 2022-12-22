@@ -6,88 +6,265 @@
     font-size: 1.5rem;
 }
 
-html, body, .hm_body_box {
-    width: 100%;
+html, body {
     height: 100%;
+    width: 100%;
 }
 
 body {
-    background-color: #222;
-    color: #fff !important;
-}
-
-.hm_header_box {
-    width: 100%;
-    height: 17vh;
+    background: #222;
+    color: #fff;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
-.hm_header_box h1 {
-    font-size: 3rem;
-}
-
-.hm_body_box, .hm_game_box {
+.hm_body_box {
+    height: 100%;
+    width: 100%;
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.hm_hangman_box {
-    width: 50vw;
-    height: 45vh;
+/* Header */
+.hm_header_box {
+    width: 100vw;
+    height: 10vh;
     display: flex;
-    background: #FFFFFF;
+    justify-content: center;
+    align-items: center;
 }
 
-.hm_hangman_box p {
-    width: 8px;
-    height: 100px;
+.hm_header_box h1 {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+/**/
+
+/* Grid */
+.hm_grid {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    margin: 0;
+}
+/* Left grid */
+.hm_left {
+    width: 20vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.hm_left h2 {
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+.hm_left p {
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+/**/
+/* Mid grid */
+.hm_mid {
+    width: 30vw;
+    height: 80vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 0;
 }
 
 .hm_word {
-    width: 100%;
-    height: 10vh;
+    width: 60vh;
+    height: 15vh;
     display: flex;
-    align-items: center;
+    text-align: center;
     justify-content: center;
-}
-
-.hm_word p {
-    font-size: 3rem;
-}
-
-.hm_lives {
-    width: 100%;
-    height: 10vh;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    margin-top: 2vh;
 }
 
-.hm_lives p {
+.hm_word_text {
     font-size: 2rem;
-    width: fit-content;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+.hm_hangman_box, pre {
+    width: 60vh;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hm_input_box {
-    width: 100%;
+    width: 60vh;
     height: 15vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+}
+/**/
+/* Right grid */
+.hm_right {
+    width: 20vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
 
+.hm_right h2 {
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+.hm_right p {
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+    word-wrap: break-word;
+    word-break: break-all;
+    width: 40%;
+    text-align: center;
+    margin: 0 auto;
+}
+/**/
+/**/
+
+/* Footer */
 .hm_footer_box {
-    width: 100%;
-    height: 5vh;
+    width: 100vw;
+    height: 10vh;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 .hm_footer_box p {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
 }
+/**/
+
+/* Form */
+
+
+.hm_input_box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.input-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin: 0;
+}
+
+.hm_input {
+    width: 60%;
+    height: 100%;
+}
+.hm_submit_button {
+    width: 30%;
+    height: 100%;
+    background: #fff;
+    color: #222;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hm_submit_button:hover {
+    background: #222;
+    color: #fff;
+}
+
+/**/
+
+/* End Box */
+.end_box {
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.end_header_box {
+    width: 100vw;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.end_body_box {
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.end_header_box h2 {
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+.end_header_box p {
+    font-size: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+.hm_replay_link {
+    font-size: 2rem;
+    color: #797979;
+    text-decoration: none;
+    margin-top: 2vh;
+    transition: all 0.3s ease;
+}
+
+.hm_replay_link:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+
+
+.hm_replay_link p {
+    font-size: 1.5rem;
+}
+/**/
