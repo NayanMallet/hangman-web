@@ -1,5 +1,11 @@
 package functions
 
+import (
+	"encoding/json"
+	"fmt"
+	"io/ioutil"
+)
+
 func Points(Data Infos) int {
 	if Data.Difficulty == "easy" {
 		Data.Points += Data.Lives
@@ -11,4 +17,57 @@ func Points(Data Infos) int {
 	}
 
 	return Data.Points
+}
+
+type ScoreInfos struct {
+	Name   string
+	Points int
+}
+
+func Save(Data Infos) {
+	// verify if the user already play, if yes and if the score is better, the func replace the old score
+	var Score = ScoreInfos{
+		Name:   Data.Name,
+		Points: Data.Points,
+	}
+	var Scores []ScoreInfos
+	var NewScores []ScoreInfos
+	var Exist bool
+	Exist = false
+	// Read file
+	file, err := ioutil.ReadFile("score-board.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+	// Unmarshal
+	err = json.Unmarshal(file, &Scores)
+	if err != nil {
+		fmt.Println(err)
+	}
+	// Check if Name already exist
+	for _, s := range Scores {
+		if s.Name == Score.Name {
+			Exist = true
+			if s.Points < Score.Points {
+				NewScores = append(NewScores, Score)
+			} else {
+				NewScores = append(NewScores, s)
+			}
+		} else {
+			NewScores = append(NewScores, s)
+		}
+	}
+	if Exist == false {
+		NewScores = append(NewScores, Score)
+	}
+	// Marshal
+	file, err = json.Marshal(NewScores)
+	if err != nil {
+		fmt.Println(err)
+	}
+	// Write file
+	err = ioutil.WriteFile("score-board.txt", file, 0644)
+	if err != nil {
+		fmt.Println(err)
+	}
 }

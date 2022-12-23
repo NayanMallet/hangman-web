@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/static/styles/hangman.css">
+    <link rel="stylesheet" href="/static/styles/hangman-styles.css">
     <title>Hangman-Web</title>
 </head>
 <body>
@@ -51,7 +51,7 @@
                         <form id="input-form"
                               action="/api/hangman"
                               method="post">
-                            <input class="hm_input" type="text" placeholder="Enter a Letter/Word" id="letter_input" name="letter" autofocus required>
+                            <input class="hm_input" type="text" placeholder="Enter a Letter/Word" id="letter_input" name="letter" pattern="^[a-zA-Z]*$" autofocus required>
                             <input class="hm_submit_button" type="submit" value="Submit">
                         </form>
                     </div>

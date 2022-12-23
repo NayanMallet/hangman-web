@@ -61,6 +61,7 @@ func Request(w http.ResponseWriter, r *http.Request) {
 		if StartData.WordToPrint == StartData.Word {
 			StartData.Win = true
 			StartData.Points = functions.Points(StartData)
+			functions.Save(StartData)
 		}
 		renderTemplate(w, "hangman", StartData)
 	default:

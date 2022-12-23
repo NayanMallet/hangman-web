@@ -8,12 +8,16 @@ func Game(Data Infos) Infos {
 	if Data.Lives > 0 {
 		if string(Data.WordRune) == Data.Word {
 			Data.Win = true
+			Data.Points = Points(Data)
+			Save(Data)
 			return Data
 		}
 		if len(Data.Propositon) > 1 {
 			// case Mot
 			if Data.Propositon == Data.Word {
 				Data.Win = true
+				Data.Points = Points(Data)
+				Save(Data)
 				return Data
 			} else {
 				Data.Lives -= 2
@@ -40,16 +44,19 @@ func Game(Data Infos) Infos {
 	} else {
 		if string(Data.WordRune) == Data.Word {
 			Data.Win = true
+			Data.Points = Points(Data)
+			Save(Data)
 			return Data
 		}
 		if len(Data.Propositon) > 1 {
 			// case Mot
 			if Data.Propositon == Data.Word {
 				Data.Win = true
+				Data.Points = Points(Data)
+				Save(Data)
 				return Data
 			} else {
 				Data.Lives -= 2
-				//Data.Win = false
 			}
 		} else {
 			// case Letter
@@ -66,11 +73,12 @@ func Game(Data Infos) Infos {
 					Data.WordToPrint = WordToPrint(Data.WordRune)
 				} else {
 					Data.Lives--
-					Data.Win = false
 				}
 			}
 			if string(Data.WordRune) == Data.Word {
 				Data.Win = true
+				Data.Points = Points(Data)
+				Save(Data)
 				return Data
 			}
 		}
