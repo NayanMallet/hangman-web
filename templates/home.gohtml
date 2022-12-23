@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman-Web</title>
     <link rel="stylesheet" href="/static/styles/home.css">
-    <script src="/static/scripts/home_keypress_target.js"></script>
 </head>
 <body>
     <div class="home_div">
@@ -16,7 +15,7 @@
                 action="/api/"
                 method="post"
         >
-            <input class="user_name_input" id="user_name_input_js" type="text" name="username" placeholder="userName" required>
+            <input class="user_name_input" id="user_name_input_js" type="text" name="username" placeholder="userName" autofocus required>
             <div class="h_difficulty_box">
                 <input type="radio" id="difficulty-easy" name="difficulty" value="easy" class="difficulty" checked>
                 <label for="difficulty-easy">Easy</label>

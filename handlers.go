@@ -44,27 +44,27 @@ func Play(w http.ResponseWriter, r *http.Request) {
 }
 
 func Request(w http.ResponseWriter, r *http.Request) {
-	if !StartData.Win && StartData.Lives > 0 {
-		if r.URL.Path != "/api/hangman" {
-			http.Error(w, "404 not found.", http.StatusNotFound)
+	if r.URL.Path != "/api/hangman" {
+		http.Error(w, "404 not found.", http.StatusNotFound)
+		return
+	}
+	switch r.Method {
+	case "GET":
+		renderTemplate(w, "hangman", StartData)
+	case "POST":
+		if err := r.ParseForm(); err != nil {
+			fmt.Fprintf(w, "ParseForm() err: %v", err)
 			return
 		}
-		switch r.Method {
-		case "GET":
-			renderTemplate(w, "hangman", StartData)
-		case "POST":
-			if err := r.ParseForm(); err != nil {
-				fmt.Fprintf(w, "ParseForm() err: %v", err)
-				return
-			}
-			StartData.Propositon = strings.ToUpper(r.FormValue("letter"))
-			StartData = functions.Game(StartData)
-			renderTemplate(w, "hangman", StartData)
-		default:
-			fmt.Fprintf(w, "Only GET and POST")
+		StartData.Propositon = strings.ToUpper(r.FormValue("letter"))
+		StartData = functions.Game(StartData)
+		if StartData.WordToPrint == StartData.Word {
+			StartData.Win = true
+			StartData.Points = functions.Points(StartData)
 		}
-	} else {
-		http.Redirect(w, r, "/endgame", http.StatusSeeOther)
+		renderTemplate(w, "hangman", StartData)
+	default:
+		fmt.Fprintf(w, "Only GET and POST")
 	}
 }
 

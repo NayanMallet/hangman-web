@@ -5,7 +5,7 @@ import (
 )
 
 func Game(Data Infos) Infos {
-	if Data.Lives > 1 {
+	if Data.Lives > 0 {
 		if string(Data.WordRune) == Data.Word {
 			Data.Win = true
 			return Data
@@ -16,10 +16,8 @@ func Game(Data Infos) Infos {
 				Data.Win = true
 				return Data
 			} else {
-				// TODO: Print lives lefts & hangman
 				Data.Lives -= 2
 				Data.Hangman = PrintHangMan(Data.Lives)
-				return Data
 			}
 		} else {
 			// case Letter
@@ -36,12 +34,9 @@ func Game(Data Infos) Infos {
 				} else {
 					Data.Lives--
 					Data.Hangman = PrintHangMan(Data.Lives)
-					// TODO: Print lives lefts & hangman
-					return Data
 				}
 			}
 		}
-		return Data
 	} else {
 		if string(Data.WordRune) == Data.Word {
 			Data.Win = true
@@ -53,10 +48,8 @@ func Game(Data Infos) Infos {
 				Data.Win = true
 				return Data
 			} else {
-				// TODO: Print Loose + The Word
 				Data.Lives -= 2
-				Data.Win = false
-				return Data
+				//Data.Win = false
 			}
 		} else {
 			// case Letter
@@ -72,13 +65,15 @@ func Game(Data Infos) Infos {
 					// TODO: Print Proposition + WordToPrint
 					Data.WordToPrint = WordToPrint(Data.WordRune)
 				} else {
-					// TODO: Print Loose + The Word
 					Data.Lives--
 					Data.Win = false
-					return Data
 				}
 			}
+			if string(Data.WordRune) == Data.Word {
+				Data.Win = true
+				return Data
+			}
 		}
-		return Data
 	}
+	return Data
 }

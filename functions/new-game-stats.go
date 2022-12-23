@@ -14,7 +14,6 @@ type Infos struct {
 	Difficulty      string
 	Points          int
 	Win             bool
-	WinLose         string
 	Alphabet        []string
 }
 
