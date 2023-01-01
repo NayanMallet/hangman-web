@@ -71,3 +71,33 @@ func Save(Data Infos) {
 		fmt.Println(err)
 	}
 }
+
+func ReadScoreBoard() []ScoreInfos {
+	// read the file and return the scoreboard in descendent order
+	var Scores []ScoreInfos
+	// Read file
+	file, err := ioutil.ReadFile("score-board.txt")
+	if err != nil {
+		fmt.Println(err)
+	}
+	// Unmarshal
+	err = json.Unmarshal(file, &Scores)
+	if err != nil {
+		fmt.Println(err)
+	}
+	// Sort
+	for i := 0; i < len(Scores); i++ {
+		for j := i + 1; j < len(Scores); j++ {
+			if Scores[i].Points < Scores[j].Points {
+				Scores[i], Scores[j] = Scores[j], Scores[i]
+			}
+		}
+	}
+
+	// return only first five scores
+	if len(Scores) > 5 {
+		return Scores[:5]
+	} else {
+		return Scores
+	}
+}

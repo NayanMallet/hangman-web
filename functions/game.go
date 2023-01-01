@@ -10,6 +10,7 @@ func Game(Data Infos) Infos {
 			Data.Win = true
 			Data.Points = Points(Data)
 			Save(Data)
+			Data.Scores = ReadScoreBoard()
 			return Data
 		}
 		if len(Data.Propositon) > 1 {
@@ -18,6 +19,7 @@ func Game(Data Infos) Infos {
 				Data.Win = true
 				Data.Points = Points(Data)
 				Save(Data)
+				Data.Scores = ReadScoreBoard()
 				return Data
 			} else {
 				Data.Lives -= 2
@@ -46,6 +48,7 @@ func Game(Data Infos) Infos {
 			Data.Win = true
 			Data.Points = Points(Data)
 			Save(Data)
+			Data.Scores = ReadScoreBoard()
 			return Data
 		}
 		if len(Data.Propositon) > 1 {
@@ -54,6 +57,7 @@ func Game(Data Infos) Infos {
 				Data.Win = true
 				Data.Points = Points(Data)
 				Save(Data)
+				Data.Scores = ReadScoreBoard()
 				return Data
 			} else {
 				Data.Lives -= 2
@@ -79,6 +83,7 @@ func Game(Data Infos) Infos {
 				Data.Win = true
 				Data.Points = Points(Data)
 				Save(Data)
+				Data.Scores = ReadScoreBoard()
 				return Data
 			}
 		}

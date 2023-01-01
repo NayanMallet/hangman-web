@@ -13,6 +13,7 @@ type Infos struct {
 	Name            string
 	Difficulty      string
 	Points          int
+	Scores          []ScoreInfos
 	Win             bool
 	Alphabet        []string
 }

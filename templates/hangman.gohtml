@@ -20,7 +20,26 @@
                     <p>Le mot était bien {{.Word}}</p>
                 </div>
                 <div class="end_body_box">
-                    <h2>Score: {{.Points}}</h2>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th colspan="2">⭐️ ScoreBoard ⭐</th>
+                        </tr>
+                        <tr>
+                            <th>Username</th>
+                            <th>Points</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{ range .Scores }}
+                            <tr>
+                                <td>{{ .Name }}</td>
+                                <td>{{ .Points }}</td>
+                            </tr>
+                        {{ end }}
+                        </tbody>
+                    </table>
+                    <br>
                     <a class="hm_replay_link" href="/">REPLAY</a>
                 </div>
             </div>

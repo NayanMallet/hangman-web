@@ -6,28 +6,66 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hangman-Web</title>
-    <link rel="stylesheet" href="/static/styles/home.css">
+    <link rel="stylesheet" href="/static/styles/home-styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 </head>
 <body>
-    <div class="home_div">
-        <form
-                id="home_form"
-                action="/api/"
-                method="post"
-        >
-            <input class="user_name_input" id="user_name_input_js" type="text" name="username" placeholder="userName" autofocus required>
-            <div class="h_difficulty_box">
-                <input type="radio" id="difficulty-easy" name="difficulty" value="easy" class="difficulty" checked>
-                <label for="difficulty-easy">Easy</label>
-
-                <input type="radio" id="difficulty-medium" name="difficulty" value="medium" class="difficulty">
-                <label for="difficulty-medium">Medium</label>
-
-                <input type="radio" id="difficulty-hard" name="difficulty" value="hard" class="difficulty">
-                <label for="difficulty-hard">Hard</label>
+    <div class="body_div">
+        <div class="header_box">
+            <h1>HANGMAN</h1>
+        </div>
+        <div class="body_box">
+            <div class="body_left_box">
+{{/*                <table class="scoreboard">*/}}
+{{/*                    <thead>*/}}
+{{/*                    <tr>*/}}
+{{/*                        <th colspan="2">⭐️ ScoreBoard ⭐</th>*/}}
+{{/*                    </tr>*/}}
+{{/*                    <tr>*/}}
+{{/*                        <th>Username</th>*/}}
+{{/*                        <th>Points</th>*/}}
+{{/*                    </tr>*/}}
+{{/*                    </thead>*/}}
+{{/*                    <tbody>*/}}
+{{/*                    {{ range .Scores }}*/}}
+{{/*                        <tr>*/}}
+{{/*                            <td>{{ .Name }}</td>*/}}
+{{/*                            <td>{{ .Points }}</td>*/}}
+{{/*                        </tr>*/}}
+{{/*                    {{ end }}*/}}
+{{/*                    </tbody>*/}}
+{{/*                </table>*/}}
             </div>
-            <input class="h_submit_button" id="h_submit_button_js" type="submit" value="Play" >
-        </form>
+            <form
+                    class="body_mid_box"
+                    id="home_form"
+                    action="/api/"
+                    method="post"
+            >
+                <input class="user_name_input" id="user_name_input_js" type="text" name="username" placeholder="userName" autofocus required>
+                <div class="h_difficulty_box">
+
+                    <label>
+                        <input type="radio" id="difficulty-easy" name="difficulty" value="easy" class="difficulty" checked>
+                        <span>Easy</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" id="difficulty-medium" name="difficulty" value="medium" class="difficulty">
+                        <span>Medium</span>
+                    </label>
+
+                    <label>
+                        <input type="radio" id="difficulty-hard" name="difficulty" value="hard" class="difficulty">
+                        <span>Hard</span>
+                    </label>
+
+                </div>
+                <button class="h_submit_button" type="submit">Play</button>
+            </form>
+            <div class="body_right_box">
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -11,7 +11,8 @@ import (
 var StartData functions.Infos
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "home", nil)
+	StartData.Scores = functions.ReadScoreBoard()
+	renderTemplate(w, "home", StartData)
 }
 
 func RequestDifficulty(w http.ResponseWriter, r *http.Request) {
@@ -30,6 +31,7 @@ func RequestDifficulty(w http.ResponseWriter, r *http.Request) {
 		// fmt.Fprintf(w, "%v", ScoreRank)
 		// Setting up new game values by difficulty
 		StartData = functions.NewGamePrep(r.FormValue("difficulty"))
+		StartData.Scores = functions.ReadScoreBoard()
 		StartData.Name = r.FormValue("username")
 		StartData.WordToPrint = functions.WordToPrint(StartData.WordRune)
 		StartData.Hangman = functions.PrintHangMan(StartData.Lives)
