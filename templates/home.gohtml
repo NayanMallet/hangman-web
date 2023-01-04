@@ -14,27 +14,46 @@
         <div class="header_box">
             <h1>HANGMAN</h1>
         </div>
+        <table class="mobile_scoreboard">
+            <thead class="scoreboard_header">
+            <tr>
+                <th colspan="2">⭐️ ScoreBoard ⭐</th>
+            </tr>
+            <tr class="scoreboard_header">
+                <th>Username</th>
+                <th>Points</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{ range .Scores }}
+                <tr>
+                    <td>{{ .Name }}</td>
+                    <td>{{ .Points }}</td>
+                </tr>
+            {{ end }}
+            </tbody>
+        </table>
         <div class="body_box">
             <div class="body_left_box">
-{{/*                <table class="scoreboard">*/}}
-{{/*                    <thead>*/}}
-{{/*                    <tr>*/}}
-{{/*                        <th colspan="2">⭐️ ScoreBoard ⭐</th>*/}}
-{{/*                    </tr>*/}}
-{{/*                    <tr>*/}}
-{{/*                        <th>Username</th>*/}}
-{{/*                        <th>Points</th>*/}}
-{{/*                    </tr>*/}}
-{{/*                    </thead>*/}}
-{{/*                    <tbody>*/}}
-{{/*                    {{ range .Scores }}*/}}
-{{/*                        <tr>*/}}
-{{/*                            <td>{{ .Name }}</td>*/}}
-{{/*                            <td>{{ .Points }}</td>*/}}
-{{/*                        </tr>*/}}
-{{/*                    {{ end }}*/}}
-{{/*                    </tbody>*/}}
-{{/*                </table>*/}}
+                <table class="scoreboard">
+                    <thead class="scoreboard_header">
+                    <tr>
+                        <th colspan="2">⭐️ ScoreBoard ⭐</th>
+                    </tr>
+                    <tr class="scoreboard_header">
+                        <th>Username</th>
+                        <th>Points</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{ range .Scores }}
+                        <tr>
+                            <td>{{ .Name }}</td>
+                            <td>{{ .Points }}</td>
+                        </tr>
+                    {{ end }}
+                    </tbody>
+                </table>
             </div>
             <form
                     class="body_mid_box"
@@ -59,12 +78,10 @@
                         <input type="radio" id="difficulty-hard" name="difficulty" value="hard" class="difficulty">
                         <span>Hard</span>
                     </label>
-
                 </div>
                 <button class="h_submit_button" type="submit">Play</button>
             </form>
-            <div class="body_right_box">
-            </div>
+            <div class="body_right_box"></div>
         </div>
     </div>
 </body>

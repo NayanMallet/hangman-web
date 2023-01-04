@@ -1,1 +1,1 @@
-[{"Name":"xX_JeanLabre_Xx","Points":15},{"Name":"Nayan","Points":10},{"Name":"Pablo","Points":4}, {"Name":"test","Points":4}, {"Name":"test2","Points":4}, {"Name":"test3","Points":155}, {"Name":"test4","Points":4}]
+[{"Name":"xX_JeanLabre_Xx","Points":15},{"Name":"Nayan","Points":10},{"Name":"Pablo","Points":4},{"Name":"test","Points":4},{"Name":"test2","Points":4},{"Name":"test3","Points":155},{"Name":"test4","Points":4},{"Name":"Leo","Points":8}]

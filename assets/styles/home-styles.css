@@ -12,8 +12,14 @@ html, body {
 }
 
 body {
-    background-color: #222;
+    background: radial-gradient(91.48% 91.48% at 50% 50%, rgba(0, 0, 0, 0) 0%, #000000 100%), #222;
     color: #fff;
+}
+
+@media screen and (min-width: 468px) {
+    body {
+        background: radial-gradient(91.48% 91.48% at 50% 50%, rgba(0, 0, 0, 0) 0%, #000000 100%), #222;
+    }
 }
 
 label:hover, input:hover, button:hover {
@@ -27,7 +33,19 @@ label:hover, input:hover, button:hover {
     flex-direction: column;
 }
 
+
 /* Header */
+@keyframes header_animation {
+    0% {
+        font-size: 0;
+        opacity: 0;
+    }
+    100% {
+        font-size: 2rem;
+        opacity: 1;
+    }
+}
+
 .header_box {
     width: 100vw;
     height: 40vh;
@@ -37,18 +55,66 @@ label:hover, input:hover, button:hover {
 }
 
 .header_box h1 {
-    font-size: 4rem;
+    font-size: 2rem;
     text-align: center;
 }
-/* End Header */
 
+@media screen and (min-width: 468px) {
+    .header_box h1 {
+        font-size: 4rem;
+    }
+
+    @keyframes header_animation {
+        0% {
+            font-size: 0;
+            opacity: 0;
+        }
+        100% {
+            font-size: 4rem;
+            opacity: 1;
+        }
+    }
+
+}
+
+@media screen and (min-width: 768px) {
+    .header_box h1 {
+        font-size: 8rem;
+    }
+
+    @keyframes header_animation {
+        0% {
+            font-size: 0;
+            opacity: 0;
+        }
+        100% {
+            font-size: 8rem;
+            opacity: 1;
+        }
+    }
+}
+
+
+
+.header_box h1 {
+    animation: 2s header_animation, 2s blink 1s infinite;
+}
+
+/* End Header */
 /* Body */
 .body_box {
     width: 100vw;
-    height: 60vh;
+    height: 40vh;
     display: flex;
     flex-direction: row;
 }
+
+@media screen and (min-width: 468px) {
+    .body_box {
+        height: 60vh;
+    }
+}
+
 
 .body_right_box {
     width: 30vw;
@@ -66,6 +132,7 @@ label:hover, input:hover, button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .user_name_input {
@@ -77,7 +144,7 @@ label:hover, input:hover, button:hover {
     border-image-width: 2;
     border-image-repeat: stretch;
     border-image-outset: 2;
-    width: calc(100% - 8px);
+    width: 80%;
     padding: .5rem 1rem;
     margin: 4px;
     background-clip: padding-box;
@@ -87,20 +154,34 @@ label:hover, input:hover, button:hover {
     writing-mode: horizontal-tb;
 }
 
-/* make a triangle below the radio button focused */
+@media screen and (min-width: 468px) {
+    .user_name_input {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .user_name_input {
+        width: 40%;
+    }
+
+}
+
+
 .h_difficulty_box {
     width: 80%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
+    margin: 3vh 0;
 }
 
 .h_difficulty_box label {
     display: flex;
     font-size: 1rem;
-    margin-bottom: .5rem;
-    margin-top: .5rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 .h_difficulty_box input {
@@ -126,33 +207,33 @@ label:hover, input:hover, button:hover {
     content: '';
     width: 2px;
     height: 2px;
-    box-shadow: 2px 2px,4px 2px,2px 4px,4px 4px,6px 4px,8px 4px,2px 6px,4px 6px,6px 6px,8px 6px,10px 6px,2px 8px,4px 8px,6px 8px,8px 8px,10px 8px,12px 8px,2px 10px,4px 10px,6px 10px,8px 10px,10px 10px,2px 12px,4px 12px,6px 12px,8px 12px,2px 14px,4px 14px;
+    box-shadow: 2px 2px, 4px 2px, 2px 4px, 4px 4px, 6px 4px, 8px 4px, 2px 6px, 4px 6px, 6px 6px, 8px 6px, 10px 6px, 2px 8px, 4px 8px, 6px 8px, 8px 8px, 10px 8px, 12px 8px, 2px 10px, 4px 10px, 6px 10px, 8px 10px, 10px 10px, 2px 12px, 4px 12px, 6px 12px, 8px 12px, 2px 14px, 4px 14px;
     color: #fff;
     position: relative;
     top: 0px;
     left: -20px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: 0
+    }
 }
 
 .h_difficulty_box input:hover + span::before {
     content: '';
     width: 2px;
     height: 2px;
-    box-shadow: 2px 2px,4px 2px,2px 4px,4px 4px,6px 4px,8px 4px,2px 6px,4px 6px,6px 6px,8px 6px,10px 6px,2px 8px,4px 8px,6px 8px,8px 8px,10px 8px,12px 8px,2px 10px,4px 10px,6px 10px,8px 10px,10px 10px,2px 12px,4px 12px,6px 12px,8px 12px,2px 14px,4px 14px;
+    box-shadow: 2px 2px, 4px 2px, 2px 4px, 4px 4px, 6px 4px, 8px 4px, 2px 6px, 4px 6px, 6px 6px, 8px 6px, 10px 6px, 2px 8px, 4px 8px, 6px 8px, 8px 8px, 10px 8px, 12px 8px, 2px 10px, 4px 10px, 6px 10px, 8px 10px, 10px 10px, 2px 12px, 4px 12px, 6px 12px, 8px 12px, 2px 14px, 4px 14px;
     color: #fff;
     position: relative;
     top: 0px;
     left: -20px;
     animation: blink 1s infinite steps(1);
-}
-
-@keyframes blink {
-    0% {
-        opacity:1
-    }
-
-    50% {
-        opacity:0
-    }
 }
 
 .h_submit_button {
@@ -180,7 +261,7 @@ label:hover, input:hover, button:hover {
     font-weight: 1000;
     position: relative;
     opacity: 0;
- }
+}
 
 .h_submit_button:hover::after {
     opacity: 1;
@@ -200,138 +281,56 @@ label:hover, input:hover, button:hover {
     transition: all 0.5s;
 }
 
+/* End of Mid box */
+/* Mobile Box */
+@media screen and (max-width: 468px) {
+    .header_box {
+        height: 30%
+    }
 
-/*&::after {*/
-/*     opacity: 1;*/
-/*     transition: all 0.5s;*/
+    .body_box {
+        height: 40%
+    }
 
-/* }*/
-/*}*/
-
-
-/* End Middle Box */
-
-/*
-
-input[type="radio"].difficulty + label {
-    padding: 0.3rem 0.5rem;
-    border-radius: 0.3rem;
-    background: #101010;
-    transition: 0.5s;
-}
-
-input[type="radio"]#difficulty-easy + label {
-    background: linear-gradient(to right, #ff8d00, #f7ad07 70%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0px 10px 37px rgba(255, 94, 16, 0.7);
-    -webkit-box-shadow: 0px 20px 20px -17px rgba(255, 159, 16, 0.53);
-    -moz-box-shadow: 0px 20px 20px -17px rgba(255, 159, 16, 0.53);
-    box-shadow: 0px 20px 20px -17px rgba(255, 159, 16, 0.53);
-}
-
-input[type="radio"]#difficulty-medium + label {
-    background: linear-gradient(to right, #006fff, #00acff 70%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0px 10px 37px rgba(0, 111, 255, 0.8);
-    -webkit-box-shadow: 0px 20px 20px -17px rgba(0, 111, 255, 0.53);
-    -moz-box-shadow: 0px 20px 20px -17px rgba(0, 111, 255, 0.53);
-    box-shadow: 0px 20px 20px -17px rgba(0, 111, 255, 0.53);
-}
-
-input[type="radio"]#difficulty-hard + label {
-    background: linear-gradient(to right, #ff1027, #ff4f06 70%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0px 10px 37px rgba(255, 16, 39, 0.6);
-}
-
-input[type="radio"]#difficulty-easy:hover + label, input[type="radio"]#difficulty-easy:checked + label {
-    padding: 0.5rem 0.7rem;
-    background: linear-gradient(to right, #ff8d00, #f7ad07 70%);
-    -webkit-background-clip: padding;
-    -webkit-text-fill-color: #222;
-    -webkit-box-shadow: 0px 20px 35px -16px rgba(255, 159, 16, 0.6);
-    -moz-box-shadow: 0px 20px 35px -16px rgba(255, 159, 16, 0.6);
-    box-shadow: 0px 20px 35px -16px rgba(255, 159, 16, 0.6);
-}
-
-input[type="radio"]#difficulty-medium:hover + label, input[type="radio"]#difficulty-medium:checked + label {
-    padding: 0.5rem 0.7rem;
-    background: linear-gradient(to right, #006fff, #00acff 70%);
-    -webkit-background-clip: padding;
-    -webkit-text-fill-color: #222;
-    -webkit-box-shadow: 0px 20px 35px -16px rgba(0, 111, 255, 0.65);
-    -moz-box-shadow: 0px 20px 35px -16px rgba(0, 111, 255, 0.65);
-    box-shadow: 0px 20px 35px -16px rgba(0, 111, 255, 0.65);
-}
-
-input[type="radio"]#difficulty-hard:hover + label, input[type="radio"]#difficulty-hard:checked + label  {
-    padding: 0.5rem 0.7rem;
-    background: linear-gradient(to right, #ff1027, #ff4f06 70%);
-    -webkit-background-clip: padding;
-    -webkit-text-fill-color: #222;
-    -webkit-box-shadow: 0px 20px 35px -16px rgba(255, 16, 39, 0.57);
-    -moz-box-shadow: 0px 20px 35px -16px rgba(255, 16, 39, 0.57);
-    box-shadow: 0px 20px 35px -16px rgba(255, 16, 39, 0.57);
+    .mobile_scoreboard {
+        display: flex;
+        height: 30%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        animation: blink 2s;
+        font-size: .75rem;
+    }
 }
 
 
-.h_submit_button {
-    padding: 0.3rem 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 0.3rem;
-    background: #222;
-    color: #FFF;
-    text-transform: uppercase;
-    transition: 0.5s ease;
-}
-
-.h_submit_button:hover {
-    background-color: #FFF;
-    color: #222;
-}
-
-/*.home_div a {
-/*    color: #484848;*/
-/*    font-size: 1.5em;*/
-/*    font-weight: bold;*/
-/*    text-decoration: none;*/
-/*    text-transform: uppercase;*/
-/*    transition: 0.5s ease;*/
-/*}*/
-
-/*.home_div a:hover {*/
-/*    color: #fff;*/
-/*    font-size: 2em;*/
-/*    letter-spacing: 0.1em;*/
-/*    text-shadow: 0 0 10px #fff,*/
-/*    0 0 20px #fff,*/
-/*    0 0 40px #fff;*/
-/*}
-
-
-.h_table {
-    height: 30vh;
-}
-
-.h_table td {
-    text-align: center;
-}
- */
-/* Header
-.hm_header_box {
-    width: 100vw;
-    height: 10vh;
+/* End of Mobile Box */
+/* Left Box */
+.body_left_box {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-.hm_header_box h1 {
-    font-size: 3rem;
-    color: #fff;
-    text-shadow: 0 0 10px #fff;
+.scoreboard {
+    height: 60%;
+    width: 80%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    animation: blink 2s;
+    font-size: 1rem;
 }
-*/
+
+@media screen and (min-width: 468px) {
+    .mobile_scoreboard {
+        display: none;
+    }
+
+    .scoreboard {
+        display: flex;
+        font-size: .75rem;
+    }
+}
