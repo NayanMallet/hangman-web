@@ -2,28 +2,43 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Press Start 2P';
+    font-family: "Press Start 2P";
 }
 
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 body {
-    background: radial-gradient(91.48% 91.48% at 50% 50%, rgba(0, 0, 0, 0) 0%, #000000 100%), #222;
+    background: radial-gradient(
+            91.48% 91.48% at 50% 50%,
+            rgba(0, 0, 0, 0) 0%,
+            #000000 100%
+    ),
+    #222;
     color: #fff;
 }
 
 @media screen and (min-width: 468px) {
     body {
-        background: radial-gradient(91.48% 91.48% at 50% 50%, rgba(0, 0, 0, 0) 0%, #000000 100%), #222;
+        background: radial-gradient(
+                91.48% 91.48% at 50% 50%,
+                rgba(0, 0, 0, 0) 0%,
+                #000000 100%
+        ),
+        #222;
     }
 }
 
-label:hover, input:hover, button:hover {
-    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0, pointer
+label:hover,
+input:hover,
+button:hover {
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+    14 0,
+    pointer;
 }
 
 .body_div {
@@ -33,8 +48,17 @@ label:hover, input:hover, button:hover {
     flex-direction: column;
 }
 
-
 /* Header */
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
 @keyframes header_animation {
     0% {
         font-size: 0;
@@ -51,7 +75,7 @@ label:hover, input:hover, button:hover {
     height: 40vh;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
 }
 
 .header_box h1 {
@@ -74,7 +98,6 @@ label:hover, input:hover, button:hover {
             opacity: 1;
         }
     }
-
 }
 
 @media screen and (min-width: 768px) {
@@ -94,13 +117,11 @@ label:hover, input:hover, button:hover {
     }
 }
 
-
-
 .header_box h1 {
     animation: 2s header_animation, 2s blink 1s infinite;
 }
-
 /* End Header */
+
 /* Body */
 .body_box {
     width: 100vw;
@@ -114,7 +135,6 @@ label:hover, input:hover, button:hover {
         height: 60vh;
     }
 }
-
 
 .body_right_box {
     width: 30vw;
@@ -141,32 +161,27 @@ label:hover, input:hover, button:hover {
     color: #fff;
     background-color: #212529;
     border-image-slice: 2;
-    border-image-width: 2;
     border-image-repeat: stretch;
-    border-image-outset: 2;
     width: 80%;
-    padding: .5rem 1rem;
-    margin: 4px;
-    background-clip: padding-box;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    writing-mode: horizontal-tb;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.5rem;
+    border-radius: 0.3rem;
 }
 
 @media screen and (min-width: 468px) {
     .user_name_input {
         width: 60%;
+        font-size: 1rem;
     }
 }
 
 @media screen and (min-width: 768px) {
     .user_name_input {
         width: 40%;
+        font-size: 1.5rem;
     }
-
 }
-
 
 .h_difficulty_box {
     width: 80%;
@@ -189,46 +204,39 @@ label:hover, input:hover, button:hover {
     appearance: none;
 }
 
-
 .h_difficulty_box span::before {
-    content: '';
+    content: "";
     display: flex;
     width: 2px;
     height: 2px;
     position: relative;
     vertical-align: middle;
-    top: 0px;
+    top: 0;
     left: -20px;
-
-
 }
 
 .h_difficulty_box input:checked + span::before {
-    content: '';
+    content: "";
     width: 2px;
     height: 2px;
-    box-shadow: 2px 2px, 4px 2px, 2px 4px, 4px 4px, 6px 4px, 8px 4px, 2px 6px, 4px 6px, 6px 6px, 8px 6px, 10px 6px, 2px 8px, 4px 8px, 6px 8px, 8px 8px, 10px 8px, 12px 8px, 2px 10px, 4px 10px, 6px 10px, 8px 10px, 10px 10px, 2px 12px, 4px 12px, 6px 12px, 8px 12px, 2px 14px, 4px 14px;
+    box-shadow: 2px 2px, 4px 2px, 2px 4px, 4px 4px, 6px 4px, 8px 4px, 2px 6px,
+    4px 6px, 6px 6px, 8px 6px, 10px 6px, 2px 8px, 4px 8px, 6px 8px, 8px 8px,
+    10px 8px, 12px 8px, 2px 10px, 4px 10px, 6px 10px, 8px 10px, 10px 10px,
+    2px 12px, 4px 12px, 6px 12px, 8px 12px, 2px 14px, 4px 14px;
     color: #fff;
     position: relative;
     top: 0px;
     left: -20px;
 }
 
-@keyframes blink {
-    0% {
-        opacity: 1
-    }
-
-    50% {
-        opacity: 0
-    }
-}
-
 .h_difficulty_box input:hover + span::before {
-    content: '';
+    content: "";
     width: 2px;
     height: 2px;
-    box-shadow: 2px 2px, 4px 2px, 2px 4px, 4px 4px, 6px 4px, 8px 4px, 2px 6px, 4px 6px, 6px 6px, 8px 6px, 10px 6px, 2px 8px, 4px 8px, 6px 8px, 8px 8px, 10px 8px, 12px 8px, 2px 10px, 4px 10px, 6px 10px, 8px 10px, 10px 10px, 2px 12px, 4px 12px, 6px 12px, 8px 12px, 2px 14px, 4px 14px;
+    box-shadow: 2px 2px, 4px 2px, 2px 4px, 4px 4px, 6px 4px, 8px 4px, 2px 6px,
+    4px 6px, 6px 6px, 8px 6px, 10px 6px, 2px 8px, 4px 8px, 6px 8px, 8px 8px,
+    10px 8px, 12px 8px, 2px 10px, 4px 10px, 6px 10px, 8px 10px, 10px 10px,
+    2px 12px, 4px 12px, 6px 12px, 8px 12px, 2px 14px, 4px 14px;
     color: #fff;
     position: relative;
     top: 0px;
@@ -239,8 +247,6 @@ label:hover, input:hover, button:hover {
 .h_submit_button {
     border-image-source: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8" ?><svg version="1.1" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><path d="M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z" fill="rgb(255,255,255)" /></svg>');
     border-image-slice: 2;
-    border-image-width: 2;
-    border-image-outset: 2;
     border-image-repeat: stretch;
 
     background-color: #fff;
@@ -257,7 +263,7 @@ label:hover, input:hover, button:hover {
 
 .h_submit_button::after {
     content: ">";
-    font-family: "Font Awesome 5 Pro";
+    font-family: "Font Awesome 5 Pro", sans-serif;
     font-weight: 1000;
     position: relative;
     opacity: 0;
@@ -276,20 +282,20 @@ label:hover, input:hover, button:hover {
 }
 
 .h_submit_button:active {
-    padding: calc(1rem + 4px) calc(1.5rem - 4px) calc(1rem - 4px) calc(1.5rem + 4px);
+    padding: calc(1rem + 4px) calc(1.5rem - 4px) calc(1rem - 4px)
+    calc(1.5rem + 4px);
     box-shadow: inset 4px 4px #adafbc;
     transition: all 0.5s;
 }
-
 /* End of Mid box */
 /* Mobile Box */
 @media screen and (max-width: 468px) {
     .header_box {
-        height: 30%
+        height: 30%;
     }
 
     .body_box {
-        height: 40%
+        height: 40%;
     }
 
     .mobile_scoreboard {
@@ -299,17 +305,39 @@ label:hover, input:hover, button:hover {
         justify-content: center;
         align-items: center;
         text-align: center;
-        animation: blink 2s;
-        font-size: .75rem;
+        animation: blink 1s;
+        font-size: 0.75rem;
     }
 }
-
-
 /* End of Mobile Box */
-/* Left Box */
+/* Left Box*/
 .body_left_box {
     display: flex;
     justify-content: center;
+}
+
+@keyframes scoreboard_animation {
+    0% {
+        font-size: 0;
+        opacity: 0;
+    }
+    100% {
+        font-size: 0.75rem;
+        opacity: 1;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    @keyframes scoreboard_animation {
+        0% {
+            font-size: 0;
+            opacity: 0;
+        }
+        100% {
+            font-size: 1rem;
+            opacity: 1;
+        }
+    }
 }
 
 .scoreboard {
@@ -320,8 +348,8 @@ label:hover, input:hover, button:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    animation: blink 2s;
     font-size: 1rem;
+    animation: 2s scoreboard_animation, 2s blink 1s;
 }
 
 @media screen and (min-width: 468px) {
@@ -331,6 +359,7 @@ label:hover, input:hover, button:hover {
 
     .scoreboard {
         display: flex;
-        font-size: .75rem;
+        font-size: 0.75rem;
     }
 }
+/* End of Left Box */
