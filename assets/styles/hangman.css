@@ -269,3 +269,16 @@ body {
     font-size: 1.5rem;
 }
 /**/
+
+.displayLives {
+    display: flex;
+    /*justify-content: center;*/
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+.displayLives img {
+    width: 10%;
+    height: 10%;
+    margin: 0 1%;
+}
