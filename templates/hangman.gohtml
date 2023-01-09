@@ -1,3 +1,4 @@
+{{$livesLeft := .Lives}}
 <!doctype html>
 <html lang="fr">
 <head>
@@ -6,36 +7,198 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/static/styles/hangman.css">
-    <script src="/static/scripts/hangman_keypress_target.js"></script>
     <title>Hangman-Web</title>
 </head>
 <body>
-    <div class="hm_body_box">
-        <div class="hm_header_box">
-            <h1>Hangman</h1>
-            {{ .Name }}
+    {{if .Win}}
+        <div class="hm_body_box">
+            <div class="hm_header_box">
+                <h1>Hangman</h1>
+            </div>
+            <div class="end_box">
+                <div class="end_header_box">
+                    <h2>Vous avez gagné !</h2>
+                    <p>Le mot était bien {{.Word}}</p>
+                </div>
+                <div class="end_body_box">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th colspan="2">⭐️ ScoreBoard ⭐</th>
+                        </tr>
+                        <tr>
+                            <th>Username</th>
+                            <th>Points</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{ range .Scores }}
+                            <tr>
+                                <td>{{ .Name }}</td>
+                                <td>{{ .Points }}</td>
+                            </tr>
+                        {{ end }}
+                        </tbody>
+                    </table>
+                    <br>
+                    <a class="hm_replay_link" href="/">REPLAY</a>
+                </div>
+            </div>
+            <div class="hm_footer_box">
+                <p>By Nayan Mallet & Pablo Jean Louis</p>
+            </div>
         </div>
-       <div class="hm_game_box">
-           <div class="hm_word">
-                <p id="hm_word_text">{{ .WordToPrint }}</p>
-           </div>
-           <div class="hm_lives">
-               <p id="hm_lives_text">{{ .Lives }}</p>
-           </div>
-           <div class='hm_hangman_box' style='background: url("http://localhost:8080/static/hangman-steps/2.png") center'>
-           </div>
-           <div class="hm_input_box">
-               <form id="input-form"
-                     action="/api/hangman"
-                     method="post">
-                   <input class="hm_input" type="text" placeholder="Enter a Letter/Word" id="letter_input" name="letter" required>
-                   <input class="hm_submit_button" type="submit" value="Submit">
-               </form>
-           </div>
-       </div>
-        <div class="hm_footer_box">
-            <p>By Nayan Mallet & Pablo Jean Louis</p>
+    {{else if .Lives}}
+        <div class="hm_body_box">
+            <div class="hm_header_box">
+                <h1>Hangman</h1>
+            </div>
+            <div class="hm_grid">
+                <div class="hm_left">
+                    <div class="hm_lives_box">
+                        <h2>Lives</h2>
+                        <div class="displayLives">
+                            {{if eq $livesLeft 0}}
+                            {{else if eq $livesLeft 1}}
+                                <img src="/static/images/heart.png">
+                            {{else if eq $livesLeft 2}}
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                            {{else if eq $livesLeft 3}}
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                            {{else if eq $livesLeft 4}}
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                            {{else if eq $livesLeft 5}}
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                            {{else if eq $livesLeft 6}}
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                            {{else if eq $livesLeft 7}}
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                            {{else if eq $livesLeft 8}}
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                            {{else if eq $livesLeft 9}}
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                            {{else if eq $livesLeft 10}}
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                                <img src="/static/images/heart.png">
+                            {{end}}
+                        </div>
+{{/*                        <p>{{.Lives}}</p>*/}}
+                    </div>
+                </div>
+                <div class="hm_mid">
+                    <div class="hm_word">
+                        <h2 id="hm_word_text">{{ .WordToPrint }}</h2>
+                    </div>
+                    <div class="hm_hangman_box">
+                        {{if eq $livesLeft 0}}
+                            <pre>0</pre>
+                            <pre>{{ .Hangman }}</pre>
+                        {{else if eq $livesLeft 1}}
+                            <pre>1</pre>
+                        {{else if eq $livesLeft 2}}
+                            <pre>2</pre>
+                        {{else if eq $livesLeft 3}}
+                            <pre>3</pre>
+                        {{else if eq $livesLeft 4}}
+                            <pre>4</pre>
+                        {{else if eq $livesLeft 5}}
+                            <pre>5</pre>
+                        {{else if eq $livesLeft 6}}
+                            <pre>6</pre>
+                        {{else if eq $livesLeft 7}}
+                            <pre>7</pre>
+                        {{else if eq $livesLeft 8}}
+                            <pre>8</pre>
+                        {{else if eq $livesLeft 9}}
+                            <pre>9</pre>
+                        {{else if eq $livesLeft 10}}
+                                <div id="livesLeft10"></div>
+                        {{end}}
+                    </div>
+                    <div class="hm_input_box">
+                        <form id="input-form"
+                              action="/api/hangman"
+                              method="post">
+                            <input class="hm_input" type="text" placeholder="Enter a Letter/Word" id="letter_input" name="letter" pattern="^[a-zA-Z]*$" autofocus required>
+                            <input class="hm_submit_button" type="submit" value="Submit">
+                        </form>
+                    </div>
+                </div>
+                <div class="hm_right">
+                    <div class="hm_letters">
+                        <h2>Letters Suggested</h2>
+                        <p>{{ .LetterSuggested }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="hm_footer_box">
+                <p>By Nayan Mallet & Pablo Jean Louis</p>
+            </div>
         </div>
-    </div>
+    {{else}}
+        <div class="hm_body_box">
+            <div class="hm_header_box">
+                <h1>Hangman</h1>
+            </div>
+            <div class="end_box">
+                <div class="end_header_box">
+                    <h2>Vous avez perdu !</h2>
+                    <p>Le mot était {{.Word}}</p>
+                </div>
+                <div class="end_body_box">
+                    <a class="hm_replay_link" href="/">REPLAY</a>
+                </div>
+            </div>
+            <div class="hm_footer_box">
+                <p>By Nayan Mallet & Pablo Jean Louis</p>
+            </div>
+        </div>
+    {{end}}
 </body>
 </html>

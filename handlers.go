@@ -11,7 +11,8 @@ import (
 var StartData functions.Infos
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "home", nil)
+	StartData.Scores = functions.ReadScoreBoard()
+	renderTemplate(w, "home", StartData)
 }
 
 func RequestDifficulty(w http.ResponseWriter, r *http.Request) {
@@ -30,9 +31,10 @@ func RequestDifficulty(w http.ResponseWriter, r *http.Request) {
 		// fmt.Fprintf(w, "%v", ScoreRank)
 		// Setting up new game values by difficulty
 		StartData = functions.NewGamePrep(r.FormValue("difficulty"))
+		StartData.Scores = functions.ReadScoreBoard()
 		StartData.Name = r.FormValue("username")
 		StartData.WordToPrint = functions.WordToPrint(StartData.WordRune)
-		StartData.Url = functions.PrintMan(StartData.Lives)
+		StartData.Hangman = functions.PrintHangMan(StartData.Lives)
 		http.Redirect(w, r, "/hangman", http.StatusSeeOther)
 	default:
 		fmt.Fprintf(w, "Only GET and POST")
@@ -44,37 +46,28 @@ func Play(w http.ResponseWriter, r *http.Request) {
 }
 
 func Request(w http.ResponseWriter, r *http.Request) {
-	if !StartData.Win && StartData.Lives > 0 {
-		if r.URL.Path != "/api/hangman" {
-			http.Error(w, "404 not found.", http.StatusNotFound)
+	if r.URL.Path != "/api/hangman" {
+		http.Error(w, "404 not found.", http.StatusNotFound)
+		return
+	}
+	switch r.Method {
+	case "GET":
+		renderTemplate(w, "hangman", StartData)
+	case "POST":
+		if err := r.ParseForm(); err != nil {
+			fmt.Fprintf(w, "ParseForm() err: %v", err)
 			return
 		}
-		switch r.Method {
-		case "GET":
-			renderTemplate(w, "hangman", StartData)
-		case "POST":
-			if err := r.ParseForm(); err != nil {
-				fmt.Fprintf(w, "ParseForm() err: %v", err)
-				return
-			}
-			StartData.Propositon = strings.ToUpper(r.FormValue("letter"))
-			StartData = functions.Game(StartData)
-			renderTemplate(w, "hangman", StartData)
-		default:
-			fmt.Fprintf(w, "Only GET and POST")
+		StartData.Propositon = strings.ToUpper(r.FormValue("letter"))
+		StartData = functions.Game(StartData)
+		if StartData.WordToPrint == StartData.Word {
+			StartData.Win = true
+			StartData.Points = functions.Points(StartData)
+			functions.Save(StartData)
 		}
-	} else {
-		http.Redirect(w, r, "/endgame", http.StatusSeeOther)
-	}
-}
-
-func EndGame(w http.ResponseWriter, r *http.Request) {
-	if StartData.Win == true {
-		StartData.WinLose = "Congrats, you won!"
-		renderTemplate(w, "endgame", StartData)
-	} else {
-		StartData.WinLose = "GAME OVER, the word was " + StartData.Word
-		renderTemplate(w, "endgame", StartData)
+		renderTemplate(w, "hangman", StartData)
+	default:
+		fmt.Fprintf(w, "Only GET and POST")
 	}
 }
 

@@ -9,12 +9,13 @@ type Infos struct {
 	Propositon      string
 	LetterSuggested []string
 	Lives           int
-	Url             string
+	Hangman         string
 	Name            string
 	Difficulty      string
 	Points          int
+	Scores          []ScoreInfos
 	Win             bool
-	WinLose         string
+	Alphabet        []string
 }
 
 func NewGamePrep(Difficulty string) (StartData Infos) {
@@ -34,14 +35,14 @@ func NewGamePrep(Difficulty string) (StartData Infos) {
 		WordRune:        WordRune,
 		WordToPrint:     WordToPrint(WordRune),
 		Propositon:      "",
-		LetterSuggested: nil,
+		LetterSuggested: []string{},
 		Lives:           10,
-		Url:             PrintMan(10),
+		Hangman:         PrintHangMan(10),
 		Name:            "",
 		Difficulty:      Difficulty,
 		Points:          0,
 		Win:             false,
-		WinLose:         "",
+		Alphabet:        []string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"},
 	}
 	return StartData
 }
