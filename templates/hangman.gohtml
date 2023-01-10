@@ -7,6 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/static/styles/hangman.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <title>Hangman-Web</title>
 </head>
 <body>
@@ -49,134 +50,114 @@
             </div>
         </div>
     {{else if .Lives}}
-        <div class="hm_body_box">
-            <div class="hm_header_box">
-                <h1>Hangman</h1>
+        <div class="body_div">
+            <div class="header_box">
+                <div class="display_lives">
+                    {{if eq $livesLeft 0}}
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                    {{else if eq $livesLeft 1}}
+                        <img src="/static/images/mid-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                    {{else if eq $livesLeft 2}}
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                    {{else if eq $livesLeft 3}}
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/mid-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                    {{else if eq $livesLeft 4}}
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                    {{else if eq $livesLeft 5}}
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/mid-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                    {{else if eq $livesLeft 6}}
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                    {{else if eq $livesLeft 7}}
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/mid-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                    {{else if eq $livesLeft 8}}
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/empty-heart.png">
+                    {{else if eq $livesLeft 9}}
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/mid-heart.png">
+                    {{else if eq $livesLeft 10}}
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                        <img src="/static/images/full-heart.png">
+                    {{end}}
+                </div>
+                <h2 class="display_word">{{ .WordToPrint }}</h2>
             </div>
-            <div class="hm_grid">
-                <div class="hm_left">
-                    <div class="hm_lives_box">
-                        <h2>Lives</h2>
-                        <div class="displayLives">
-                            {{if eq $livesLeft 0}}
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                            {{else if eq $livesLeft 1}}
-                                <img src="/static/images/mid-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                            {{else if eq $livesLeft 2}}
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                            {{else if eq $livesLeft 3}}
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/mid-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                            {{else if eq $livesLeft 4}}
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                            {{else if eq $livesLeft 5}}
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/mid-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                            {{else if eq $livesLeft 6}}
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                            {{else if eq $livesLeft 7}}
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/mid-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                            {{else if eq $livesLeft 8}}
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/empty-heart.png">
-                            {{else if eq $livesLeft 9}}
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/mid-heart.png">
-                            {{else if eq $livesLeft 10}}
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                                <img src="/static/images/full-heart.png">
-                            {{end}}
-                        </div>
-{{/*                        <p>{{.Lives}}</p>*/}}
-                    </div>
-                </div>
-                <div class="hm_mid">
-                    <div class="hm_word">
-                        <h2 id="hm_word_text">{{ .WordToPrint }}</h2>
-                    </div>
-                    <div class="hm_hangman_box">
-                        {{if eq $livesLeft 0}}
-                            <pre>0</pre>
-                            <pre>{{ .Hangman }}</pre>
-                        {{else if eq $livesLeft 1}}
-                            <pre>1</pre>
-                        {{else if eq $livesLeft 2}}
-                            <pre>2</pre>
-                        {{else if eq $livesLeft 3}}
-                            <pre>3</pre>
-                        {{else if eq $livesLeft 4}}
-                            <pre>4</pre>
-                        {{else if eq $livesLeft 5}}
-                            <pre>5</pre>
-                        {{else if eq $livesLeft 6}}
-                            <pre>6</pre>
-                        {{else if eq $livesLeft 7}}
-                            <pre>7</pre>
-                        {{else if eq $livesLeft 8}}
-                            <pre>8</pre>
-                        {{else if eq $livesLeft 9}}
-                            <pre>9</pre>
-                        {{else if eq $livesLeft 10}}
-                                <div id="livesLeft10"></div>
-                        {{end}}
-                    </div>
-                    <div class="hm_input_box">
-                        <form id="input-form"
-                              action="/api/hangman"
-                              method="post">
-                            <input class="hm_input" type="text" placeholder="Enter a Letter/Word" id="letter_input" name="letter" pattern="^[a-zA-Z]*$" autofocus required>
-                            <input class="hm_submit_button" type="submit" value="Submit">
-                        </form>
-                    </div>
-                </div>
-                <div class="hm_right">
-                    <div class="hm_letters">
-                        <h2>Letters Suggested</h2>
-                        <p>{{ .LetterSuggested }}</p>
-                    </div>
-                </div>
+
+            <div class="body_box">
+                {{if eq $livesLeft 0}}
+                    <pre>0</pre>
+                    <pre>{{ .Hangman }}</pre>
+                {{else if eq $livesLeft 1}}
+                    <pre>1</pre>
+                {{else if eq $livesLeft 2}}
+                    <pre>2</pre>
+                {{else if eq $livesLeft 3}}
+                    <pre>3</pre>
+                {{else if eq $livesLeft 4}}
+                    <pre>4</pre>
+                {{else if eq $livesLeft 5}}
+                    <pre>5</pre>
+                {{else if eq $livesLeft 6}}
+                    <pre>6</pre>
+                {{else if eq $livesLeft 7}}
+                    <pre>7</pre>
+                {{else if eq $livesLeft 8}}
+                    <pre>8</pre>
+                {{else if eq $livesLeft 9}}
+                    <pre>9</pre>
+                {{else if eq $livesLeft 10}}
+                    <div id="livesLeft10"></div>
+                {{end}}
             </div>
-            <div class="hm_footer_box">
-                <p>By Nayan Mallet & Pablo Jean Louis</p>
+
+            <div class="footer_box">
+                <form id="input-form"
+                      action="/api/hangman"
+                      method="post">
+                    <input class="hm_input" type="text" placeholder="Enter a Letter/Word" id="letter_input" name="letter" pattern="^[a-zA-Z]*$" autofocus required>
+                    <input class="hm_submit_button" type="submit" value=">">
+                </form>
             </div>
         </div>
     {{else}}

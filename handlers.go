@@ -34,7 +34,6 @@ func RequestDifficulty(w http.ResponseWriter, r *http.Request) {
 		StartData.Scores = functions.ReadScoreBoard()
 		StartData.Name = r.FormValue("username")
 		StartData.WordToPrint = functions.WordToPrint(StartData.WordRune)
-		StartData.Hangman = functions.PrintHangMan(StartData.Lives)
 		http.Redirect(w, r, "/hangman", http.StatusSeeOther)
 	default:
 		fmt.Fprintf(w, "Only GET and POST")

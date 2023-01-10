@@ -9,13 +9,11 @@ type Infos struct {
 	Propositon      string
 	LetterSuggested []string
 	Lives           int
-	Hangman         string
 	Name            string
 	Difficulty      string
 	Points          int
 	Scores          []ScoreInfos
 	Win             bool
-	Alphabet        []string
 }
 
 func NewGamePrep(Difficulty string) (StartData Infos) {
@@ -37,12 +35,10 @@ func NewGamePrep(Difficulty string) (StartData Infos) {
 		Propositon:      "",
 		LetterSuggested: []string{},
 		Lives:           10,
-		Hangman:         PrintHangMan(10),
 		Name:            "",
 		Difficulty:      Difficulty,
 		Points:          0,
 		Win:             false,
-		Alphabet:        []string{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"},
 	}
 	return StartData
 }

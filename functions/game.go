@@ -23,7 +23,6 @@ func Game(Data Infos) Infos {
 				return Data
 			} else {
 				Data.Lives -= 2
-				Data.Hangman = PrintHangMan(Data.Lives)
 			}
 		} else {
 			// case Letter
@@ -39,7 +38,6 @@ func Game(Data Infos) Infos {
 					Data.WordToPrint = WordToPrint(Data.WordRune)
 				} else {
 					Data.Lives--
-					Data.Hangman = PrintHangMan(Data.Lives)
 				}
 			}
 		}
