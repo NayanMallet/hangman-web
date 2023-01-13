@@ -98,14 +98,9 @@ button:hover {
     align-items: center;
 }
 
-/* temporaire ⚠️*/
-.body_box pre {
-    height: 90%;
-    width: 90%;
-    margin: auto;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+.hangman_steps {
+    height: 100%;
+    width: auto;
 }
 /**/
 
