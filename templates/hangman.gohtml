@@ -10,171 +10,146 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <title>Hangman-Web</title>
 </head>
-<body style="background-image: url({{.Hangman}})">
-    {{if .Win}}
-        <div class="hm_body_box">
-            <div class="hm_header_box">
-                <h1>Hangman</h1>
+<body>
+{{if .Win}}
+    <div class="hm_body_box">
+        <div class="hm_header_box">
+            <h1>Hangman</h1>
+        </div>
+        <div class="end_box">
+            <div class="end_header_box">
+                <h2>Vous avez gagné !</h2>
+                <p>Le mot était bien {{.Word}}</p>
             </div>
-            <div class="end_box">
-                <div class="end_header_box">
-                    <h2>Vous avez gagné !</h2>
-                    <p>Le mot était bien {{.Word}}</p>
-                </div>
-                <div class="end_body_box">
-                    <table>
-                        <thead>
+            <div class="end_body_box">
+                <table>
+                    <thead>
+                    <tr>
+                        <th colspan="2">⭐️ ScoreBoard ⭐</th>
+                    </tr>
+                    <tr>
+                        <th>Username</th>
+                        <th>Points</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{ range .Scores }}
                         <tr>
-                            <th colspan="2">⭐️ ScoreBoard ⭐</th>
+                            <td>{{ .Name }}</td>
+                            <td>{{ .Points }}</td>
                         </tr>
-                        <tr>
-                            <th>Username</th>
-                            <th>Points</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {{ range .Scores }}
-                            <tr>
-                                <td>{{ .Name }}</td>
-                                <td>{{ .Points }}</td>
-                            </tr>
-                        {{ end }}
-                        </tbody>
-                    </table>
-                    <br>
-                    <a class="hm_replay_link" href="/">REPLAY</a>
-                </div>
-            </div>
-            <div class="hm_footer_box">
-                <p>By Nayan Mallet & Pablo Jean Louis</p>
+                    {{ end }}
+                    </tbody>
+                </table>
+                <br>
+                <a class="hm_replay_link" href="/">REPLAY</a>
             </div>
         </div>
-    {{else if .Lives}}
-        <div class="body_div">
-            <div class="header_box">
-                <div class="display_lives">
-                    {{if eq $livesLeft 0}}
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                    {{else if eq $livesLeft 1}}
-                        <img src="/static/images/mid-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                    {{else if eq $livesLeft 2}}
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                    {{else if eq $livesLeft 3}}
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/mid-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                    {{else if eq $livesLeft 4}}
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                    {{else if eq $livesLeft 5}}
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/mid-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                    {{else if eq $livesLeft 6}}
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                    {{else if eq $livesLeft 7}}
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/mid-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                    {{else if eq $livesLeft 8}}
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/empty-heart.png">
-                    {{else if eq $livesLeft 9}}
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/mid-heart.png">
-                    {{else if eq $livesLeft 10}}
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                        <img src="/static/images/full-heart.png">
-                    {{end}}
-                </div>
-                <h2 class="display_word">{{ .WordToPrint }}</h2>
-            </div>
-            <div class="body_box" style="opacity: 0">
+        <div class="hm_footer_box">
+            <p>By Nayan Mallet & Pablo Jean Louis</p>
+        </div>
+    </div>
+{{else if .Lives}}
+    <div class="body_div">
+        <div class="header_box">
+            <div class="display_lives">
                 {{if eq $livesLeft 0}}
-                    <img class="hangman_steps" src="/static/images/hangman-steps/10.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 1}}
-                    <img class="hangman_steps" src="/static/images/hangman-steps/10.png">
+                    <img src="/static/images/mid-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 2}}
-                    <img class="hangman_steps" src="/static/images/hangman-steps/9.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 3}}
-                    <img class="hangman_steps" src="/static/images/hangman-steps/8.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/mid-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 4}}
-                    <img class="hangman_steps" src="/static/images/hangman-steps/7.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 5}}
-                    <img class="hangman_steps" src="/static/images/hangman-steps/6.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/mid-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 6}}
-                    <img class="hangman_steps" src="/static/images/hangman-steps/5.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/empty-heart.png">
+                    <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 7}}
-                    <img class="hangman_steps" src="/static/images/hangman-steps/4.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/mid-heart.png">
+                    <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 8}}
-                    <img class="hangman_steps" src="/static/images/hangman-steps/3.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 9}}
-                    <img class="hangman_steps" src="/static/images/hangman-steps/2.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/mid-heart.png">
                 {{else if eq $livesLeft 10}}
-                    <img class="hangman_steps" src="/static/images/hangman-steps/1.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
+                    <img src="/static/images/full-heart.png">
                 {{end}}
             </div>
-            <div class="footer_box">
-                <form id="input-form"
-                      action="/api/hangman"
-                      method="post">
-                    <input class="hm_input" type="text" placeholder="Enter a Letter/Word" id="letter_input" name="letter" pattern="^[a-zA-Z]*$" autofocus required>
-                    <input class="hm_submit_button" type="submit" value=">">
-                </form>
-            </div>
+            <h2 class="display_word">{{ .WordToPrint }}</h2>
         </div>
-    {{else}}
-        <div class="hm_body_box">
-            <div class="hm_header_box">
-                <h1>Hangman</h1>
-            </div>
-            <div class="end_box">
-                <div class="end_header_box">
-                    <h2>Vous avez perdu !</h2>
-                    <p>Le mot était {{.Word}}</p>
-                </div>
-                <div class="end_body_box">
-                    <a class="hm_replay_link" href="/">REPLAY</a>
-                </div>
-            </div>
-            <div class="hm_footer_box">
-                <p>By Nayan Mallet & Pablo Jean Louis</p>
-            </div>
+        <div class="body_box" style="background: url({{.Hangman}})">
+
         </div>
-    {{end}}
+        <div class="footer_box">
+            <form id="input-form"
+                  action="/api/hangman"
+                  method="post">
+                <input class="hm_input" type="text" placeholder="Enter a Letter/Word" id="letter_input" name="letter" pattern="^[a-zA-Z]*$" autofocus required>
+                <input class="hm_submit_button" type="submit" value=">">
+            </form>
+        </div>
+    </div>
+{{else}}
+    <div class="loose_body">
+        <div class="ls_header_box">
+            <h1>Hangman</h1>
+        </div>
+        <div class="ls_body_box">
+            <img class="ls_img" src="/static/images/loose-img">
+            <h2>Vous avez perdu !</h2>
+            <p>The word was:</p>
+            <p>{{.Word}}</p>
+        </div>
+        <div class="ls_footer_box">
+            <a class="hm_replay_link" href="/">REPLAY</a>
+        </div>
+    </div>
+{{end}}
 </body>
 </html>
