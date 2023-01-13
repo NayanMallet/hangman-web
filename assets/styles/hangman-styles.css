@@ -178,7 +178,60 @@ button:hover {
     transition: all 0.5s;
 }
 
-/* End Footer */
+/* Loose Page */
+.loose_body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Box */
+
+.ls_header_box {
+    width: 100vw;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ls_header_box h1 {
+    text-align: center;
+    font-size: 1rem;
+}
+/* End Header Box */
+
+/* Body Box */
+
+.ls_body_box {
+    width: 100vw;
+    height: 65vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ls_body_box img {
+    width: 10%;
+    height: auto;
+}
+/* End body Box /
+
+/* Footer Box */
+.ls_footer_box {
+    width: 100vw;
+    height: 20vh;
+}
+
+.ls_footer_box a {
+    text-align: center;
+    font-size: 1rem;
+}
+/* End Footer Box /
+
+/ End Loose Page */
 
 /*.header_box h1 {*/
 /*    font-size: 2rem;*/
