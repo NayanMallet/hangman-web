@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Press Start 2P";
+    font-family: "Press Start 2P", sans-serif;
 }
 
 html,
@@ -225,7 +225,7 @@ button:hover {
     2px 12px, 4px 12px, 6px 12px, 8px 12px, 2px 14px, 4px 14px;
     color: #fff;
     position: relative;
-    top: 0px;
+    top: 0;
     left: -20px;
 }
 
@@ -239,7 +239,7 @@ button:hover {
     2px 12px, 4px 12px, 6px 12px, 8px 12px, 2px 14px, 4px 14px;
     color: #fff;
     position: relative;
-    top: 0px;
+    top: 0;
     left: -20px;
     animation: blink 1s infinite steps(1);
 }

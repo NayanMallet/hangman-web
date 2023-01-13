@@ -9,6 +9,7 @@ import (
 const port = ":8080"
 
 func main() {
+	print(functions.HangmanStepLink(10))
 	fs := http.FileServer(http.Dir("assets/"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 

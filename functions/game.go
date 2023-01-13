@@ -1,7 +1,7 @@
 package functions
 
 import (
-	game_function "hangman-classic/g-func"
+	gamefunction "hangman-classic/g-func"
 )
 
 func Game(Data Infos) Infos {
@@ -23,21 +23,22 @@ func Game(Data Infos) Infos {
 				return Data
 			} else {
 				Data.Lives -= 2
+				Data.Hangman = HangmanStepLink(Data.Lives)
 			}
 		} else {
 			// case Letter
-			if !(game_function.ContainsTable(Data.LetterSuggested, Data.Propositon)) {
+			if !(gamefunction.ContainsTable(Data.LetterSuggested, Data.Propositon)) {
 				Data.LetterSuggested = append(Data.LetterSuggested, Data.Propositon)
 				Data.LetterSuggested = SortLetterSuggested(Data.LetterSuggested)
-				if game_function.ContainsString(Data.Word, Data.Propositon) {
-					indexes := game_function.LetterInWorld(Data.Word, Data.Propositon)
+				if gamefunction.ContainsString(Data.Word, Data.Propositon) {
+					indexes := gamefunction.LetterInWorld(Data.Word, Data.Propositon)
 					for _, i := range indexes {
 						Data.WordRune[i] = rune(Data.Word[i])
 					}
-					// TODO: Print Proposition + WordToPrint
 					Data.WordToPrint = WordToPrint(Data.WordRune)
 				} else {
 					Data.Lives--
+					Data.Hangman = HangmanStepLink(Data.Lives)
 				}
 			}
 		}
@@ -59,22 +60,23 @@ func Game(Data Infos) Infos {
 				return Data
 			} else {
 				Data.Lives -= 2
+				Data.Hangman = HangmanStepLink(Data.Lives)
 			}
 		} else {
 			// case Letter
-			if !(game_function.ContainsTable(Data.LetterSuggested, Data.Propositon)) {
+			if !(gamefunction.ContainsTable(Data.LetterSuggested, Data.Propositon)) {
 				Data.LetterSuggested = append(Data.LetterSuggested, Data.Propositon)
 				Data.LetterSuggested = SortLetterSuggested(Data.LetterSuggested)
-				if game_function.ContainsString(Data.Word, Data.Propositon) {
+				if gamefunction.ContainsString(Data.Word, Data.Propositon) {
 					Data.LetterSuggested = append(Data.LetterSuggested, Data.Propositon)
-					indexes := game_function.LetterInWorld(Data.Word, Data.Propositon)
+					indexes := gamefunction.LetterInWorld(Data.Word, Data.Propositon)
 					for _, i := range indexes {
 						Data.WordRune[i] = rune(Data.Word[i])
 					}
-					// TODO: Print Proposition + WordToPrint
 					Data.WordToPrint = WordToPrint(Data.WordRune)
 				} else {
 					Data.Lives--
+					Data.Hangman = HangmanStepLink(Data.Lives)
 				}
 			}
 			if string(Data.WordRune) == Data.Word {

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <title>Hangman-Web</title>
 </head>
-<body>
+<body style="background-image: url({{.Hangman}})">
     {{if .Win}}
         <div class="hm_body_box">
             <div class="hm_header_box">
@@ -123,7 +123,7 @@
                 </div>
                 <h2 class="display_word">{{ .WordToPrint }}</h2>
             </div>
-            <div class="body_box">
+            <div class="body_box" style="opacity: 0">
                 {{if eq $livesLeft 0}}
                     <img class="hangman_steps" src="/static/images/hangman-steps/10.png">
                 {{else if eq $livesLeft 1}}
