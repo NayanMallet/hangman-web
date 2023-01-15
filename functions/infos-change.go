@@ -7,5 +7,5 @@ func WordToPrint(runeArray []rune) string {
 }
 
 func HangmanStepLink(Lives int) string {
-	return "/static/images/hangman-steps/" + strconv.Itoa(Lives) + ".png/"
+	return "/static/images/hangman-steps/" + strconv.Itoa(11-Lives) + ".png/"
 }

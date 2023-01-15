@@ -137,9 +137,15 @@ button:hover {
 }
 
 .body_right_box {
-    width: 30vw;
-    display: flex;
-    justify-content: center;
+    display: none;
+}
+
+@media screen and (min-width: 468px) {
+    .body_right_box {
+        width: 30vw;
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .body_left_box {
@@ -148,11 +154,22 @@ button:hover {
 
 /* Middle Box */
 .body_mid_box {
-    width: 40vw;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+@media screen and (min-width: 468px) {
+    .body_mid_box {
+        width: 40vw;
+    }
+
+    .user_name_input {
+        width: 80%;
+        font-size: 0.5rem;
+    }
 }
 
 .user_name_input {
@@ -162,12 +179,13 @@ button:hover {
     background-color: #212529;
     border-image-slice: 2;
     border-image-repeat: stretch;
-    width: 80%;
+    width: 50%;
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
-    font-size: 0.5rem;
+    font-size: 1rem;
     border-radius: 0.3rem;
 }
+
 
 @media screen and (min-width: 468px) {
     .user_name_input {
@@ -180,6 +198,12 @@ button:hover {
     .user_name_input {
         width: 40%;
         font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 468px) {
+    .h_difficulty_box span {
+       font-size: .9rem;
     }
 }
 
@@ -312,8 +336,7 @@ button:hover {
 /* End of Mobile Box */
 /* Left Box*/
 .body_left_box {
-    display: flex;
-    justify-content: center;
+    display: none;
 }
 
 @keyframes scoreboard_animation {
@@ -324,6 +347,13 @@ button:hover {
     100% {
         font-size: 0.75rem;
         opacity: 1;
+    }
+}
+
+@media screen and (min-width: 468px) {
+    .body_left_box {
+        display: flex;
+        justify-content: center;
     }
 }
 
