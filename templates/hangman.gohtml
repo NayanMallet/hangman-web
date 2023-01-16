@@ -60,7 +60,7 @@
                     <img src="/static/images/empty-heart.png">
                     <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 1}}
-                    <img src="/static/images/mid-heart.png">
+                    <img src="/static/images/mid-heart.png" class="active">
                     <img src="/static/images/empty-heart.png">
                     <img src="/static/images/empty-heart.png">
                     <img src="/static/images/empty-heart.png">
@@ -73,7 +73,7 @@
                     <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 3}}
                     <img src="/static/images/full-heart.png">
-                    <img src="/static/images/mid-heart.png">
+                    <img src="/static/images/mid-heart.png" class="active">
                     <img src="/static/images/empty-heart.png">
                     <img src="/static/images/empty-heart.png">
                     <img src="/static/images/empty-heart.png">
@@ -86,7 +86,7 @@
                 {{else if eq $livesLeft 5}}
                     <img src="/static/images/full-heart.png">
                     <img src="/static/images/full-heart.png">
-                    <img src="/static/images/mid-heart.png">
+                    <img src="/static/images/mid-heart.png" class="active">
                     <img src="/static/images/empty-heart.png">
                     <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 6}}
@@ -99,7 +99,7 @@
                     <img src="/static/images/full-heart.png">
                     <img src="/static/images/full-heart.png">
                     <img src="/static/images/full-heart.png">
-                    <img src="/static/images/mid-heart.png">
+                    <img src="/static/images/mid-heart.png" class="active">
                     <img src="/static/images/empty-heart.png">
                 {{else if eq $livesLeft 8}}
                     <img src="/static/images/full-heart.png">
@@ -112,7 +112,7 @@
                     <img src="/static/images/full-heart.png">
                     <img src="/static/images/full-heart.png">
                     <img src="/static/images/full-heart.png">
-                    <img src="/static/images/mid-heart.png">
+                    <img src="/static/images/mid-heart.png" class="active">
                 {{else if eq $livesLeft 10}}
                     <img src="/static/images/full-heart.png">
                     <img src="/static/images/full-heart.png">
@@ -123,8 +123,13 @@
             </div>
             <h2 class="display_word">{{ .WordToPrint }}</h2>
         </div>
-        <div class="body_box" style="background: url({{.Hangman}})">
-
+        <div class="body_box">
+            <div class="body_left_box">
+                <h3>Letter Suggested</h3>
+                <h3 class="letter_suggested">{{.LetterSuggested}}</h3>
+            </div>
+            <div class="body_bottom_box" style="background: url({{.Hangman}});"></div>
+            <div class="body_right_box"></div>
         </div>
         <div class="footer_box">
             <form id="input-form"
