@@ -1,6 +1,6 @@
 package functions
 
-import gamefunction "hangman-classic/g-func"
+import gamefunction "github.com/NayanMallet/hangman-classic/g-func"
 
 type Infos struct {
 	Word            string

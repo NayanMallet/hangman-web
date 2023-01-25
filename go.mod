@@ -2,6 +2,4 @@ module hangman-web
 
 go 1.19
 
-replace hangman-classic => ../hangman-classic
-
-require hangman-classic v0.0.0-00010101000000-000000000000
+require github.com/NayanMallet/hangman-classic v0.0.0-20230125072835-5eee482fb584

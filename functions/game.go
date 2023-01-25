@@ -1,7 +1,7 @@
 package functions
 
 import (
-	gamefunction "hangman-classic/g-func"
+	gamefunction "github.com/NayanMallet/hangman-classic/g-func"
 )
 
 func Game(Data Infos) Infos {
