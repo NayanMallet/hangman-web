@@ -9,6 +9,6 @@
 - If you find all the letters of the word, you win
 
 #### How to play 🎮
-- Clone the repository ***"https://github.com/NayanMallet/hangman-web"***
-- Run the file `main.go` with `go run main.go`
+- Clone the [repository](https://github.com/NayanMallet/hangman-web)
+- Run the file `main.go` with `go run .`
 - Enjoy the game :)
