@@ -1,1 +1,1 @@
-[{"Name":"nayan","Points":9},{"Name":"Pablo","Points":5},{"Name":"Cyrielle","Points":18}]
+[{"Name":"nayan","Points":9},{"Name":"Pablo","Points":5},{"Name":"Cyrielle","Points":18},{"Name":"Jean","Points":28}]

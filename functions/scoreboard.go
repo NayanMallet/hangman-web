@@ -7,6 +7,7 @@ import (
 )
 
 func Points(Data Infos) int {
+	// calculate the points of the user by the difficulty
 	if Data.Difficulty == "easy" {
 		Data.Points += Data.Lives
 	} else if Data.Difficulty == "medium" {

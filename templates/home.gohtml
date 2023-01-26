@@ -10,6 +10,23 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 </head>
 <body>
+    <div class="home-help">
+        <h1>Rules</h1>
+        <p>Rules are simple, you have to guess the word by suggesting letters.</p>
+        <p>You have 10 attempts to guess the word.</p>
+        <p>You can suggest letter and the whole word.</p>
+        <p>If the letter suggest is correct, the letter will be revealed in the word, else you will lose a life.</p>
+        <p>If your word suggest is correct you win, else you will lose 2 attempts.</p>
+        <p>If you lose all your attempts, you will lose the game.</p>
+    </div>
+    <button class="home-help-button-close" onclick="document.querySelector('.home-help').style.display = 'none'; document.querySelector('.home-help-button-close').style.display = 'none';">X</button>
+    <button class="home-help-button" style="background-image: url('/static/images/home-help-vide.png');" onclick="document.querySelector('.home-help').style.display = 'flex'; document.querySelector('.home-help-button-close').style.display = 'block';"></button>
+    <style>
+        .home-help-button:hover {
+            background-image: url('/static/images/home-help.png') !important;
+        }
+    </style>
+
     <div class="body_div">
         <div class="header_box">
             <h1>HANGMAN</h1>

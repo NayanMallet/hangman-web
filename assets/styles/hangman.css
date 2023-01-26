@@ -165,13 +165,8 @@ button:hover {
     width: 60%;
     wrap-option: wrap;
     margin-top: 5vh;
-    /*color: #adafbc;*/
     color: white;
 }
-
-/*.letter_suggested.active {*/
-/*    color: white;*/
-/*}*/
 
 .body_right_box {
     display: none;

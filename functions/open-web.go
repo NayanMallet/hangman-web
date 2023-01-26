@@ -8,8 +8,8 @@ import (
 )
 
 func Openbrowser(url string) {
+	// Open the url in the default browser of the user.
 	var err error
-
 	switch runtime.GOOS {
 	case "linux":
 		err = exec.Command("xdg-open", url).Start()

@@ -28,6 +28,7 @@ func NewGamePrep(Difficulty string) (StartData Infos) {
 	case "hard":
 		Word, WordRune = gamefunction.NewGamePrep([]string{"words3.txt"})
 	}
+	// Generate a random word
 
 	StartData = Infos{
 		Word:            Word,
@@ -42,5 +43,6 @@ func NewGamePrep(Difficulty string) (StartData Infos) {
 		Hangman:         HangmanStepLink(10),
 		Win:             false,
 	}
+	// Reset the Infos struct
 	return StartData
 }
