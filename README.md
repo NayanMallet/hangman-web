@@ -3,11 +3,9 @@
 ## Introduction
 Hangman is a word guessing game where the player must guess a secret word letter by letter within a certain number of attempts.
 
-![image](https://github.com/NayanMallet/hangman-web/assets/81246812/7353283d-0934-49e4-a76b-8e67dbed145c)
+![image](https://github.com/NayanMallet/hangman-web/assets/81246812/dc9092e0-7d92-4159-82b4-db15f29f060b)
 
 This project implements a Hangman game using Golang with a RESTful API to facilitate communication between the client and server sides. It includes features such as updating high scores, responsive web design, and more.
-
-![image](https://github.com/NayanMallet/hangman-web/assets/81246812/d23a6dbe-8504-49d0-909c-49b0e7ebe7ab)
 
 ## Game Rules 📝
 - The player has 10 lives.
