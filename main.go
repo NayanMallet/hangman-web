@@ -28,8 +28,3 @@ func main() {
 
 	http.ListenAndServe(port, nil)
 }
-
-// Handler is the exported function that Vercel looks for
-func Handler(w http.ResponseWriter, r *http.Request) {
-	main()
-}
